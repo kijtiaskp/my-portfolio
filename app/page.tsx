@@ -286,7 +286,17 @@ export default function Portfolio() {
   }, [])
 
   const [heroName, setHeroName] = useState("KIJTISAK PANGMEE")
-  const { displayText: heroSubtitle } = useGlitchText("SOFTWARE DEVELOPER", true, true)
+
+  // Array of subtitle texts to cycle through
+  const subtitleTexts = [
+    "SOFTWARE DEVELOPER",
+    "GAMER",
+    "SLEEPER",
+    "POTTERHEAD",
+  ]
+
+  const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0)
+  const { displayText: heroSubtitle } = useGlitchText(subtitleTexts[currentSubtitleIndex], true, true)
 
   // Auto-scroll terminal to bottom
   useEffect(() => {
@@ -423,6 +433,17 @@ export default function Portfolio() {
 
     return () => clearTimeout(timeout)
   }, [])
+
+  // Cycle through subtitle texts
+  useEffect(() => {
+    const subtitleInterval = setInterval(() => {
+      setCurrentSubtitleIndex((prevIndex) =>
+        (prevIndex + 1) % subtitleTexts.length
+      )
+    }, 3000) // Change every 3 seconds
+
+    return () => clearInterval(subtitleInterval)
+  }, [subtitleTexts.length])
 
   const handleCommand = (cmd: string) => {
     const command = cmd.toLowerCase().trim()
