@@ -272,11 +272,18 @@ export default function Portfolio() {
   const [currentCommand, setCurrentCommand] = useState("")
   const [terminalHistory, setTerminalHistory] = useState([
     { type: "output", content: "Linux portfolio-server 5.15.0-kijtisak #1 SMP" },
-    { type: "output", content: "Last login: " + new Date().toLocaleString() },
+    { type: "output", content: "Last login: Loading..." },
     { type: "output", content: "Welcome to Kijtisak's development environment!" },
     { type: "info", content: "Type 'help' to see available commands." },
   ])
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Update the login date on client side only to prevent hydration mismatch
+  useEffect(() => {
+    setTerminalHistory(prev => prev.map((item, index) =>
+      index === 1 ? { ...item, content: "Last login: " + new Date().toLocaleString() } : item
+    ))
+  }, [])
 
   const [heroName, setHeroName] = useState("KIJTISAK PANGMEE")
   const { displayText: heroSubtitle } = useGlitchText("SOFTWARE DEVELOPER", true, true)
