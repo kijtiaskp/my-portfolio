@@ -719,9 +719,28 @@ export default function Portfolio() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
                   <span className="block text-green-400 font-mono">Hello, I'm</span>
-                  <span className="block bg-gradient-to-r from-green-400 via-green-300 to-green-500 bg-clip-text text-transparent">
+                  <motion.span
+                    className="block font-mono relative"
+                    style={{
+                      color: "#ffffff",
+                      textShadow: "0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff",
+                      filter: "saturate(1.5) brightness(1.2)",
+                    }}
+                    animate={{
+                      textShadow: [
+                        "0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff",
+                        "0 0 15px #ffffff, 0 0 25px #ffffff, 0 0 35px #ffffff",
+                        "0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff",
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {heroName}
-                  </span>
+                  </motion.span>
                 </motion.h1>
 
                 <motion.div
