@@ -50,32 +50,32 @@ const skillsData = [
   {
     title: "Programming",
     color: "text-pink-400",
-    skills: ["JavaScript", "TypeScript", "C# ASP.NET", "Go", "PHP", "HTML5", "CSS3", "CSS", "HTML"],
+    skills: ["JavaScript", "TypeScript", "C# ASP.NET", "Go", "PHP", "HTML5", "CSS3", "CSS", "HTML", "C#"],
   },
   {
     title: "Frontend",
-    color: "text-emerald-400",
-    skills: ["ReactTS", "Vue.JS", "AngularJS", "Next.js", "TailwindCSS", "ReactJS", "Vue 2"],
+    color: "text-cyan-400",
+    skills: ["ReactTS", "Vue.JS", "AngularJS", "Next.js", "TailwindCSS", "ReactJS", "Vue 2", "Vue.js", "React"],
   },
   {
     title: "Backend",
     color: "text-orange-400",
-    skills: ["ExpressJS", "NestJS", ".NET Core", "PHP Laravel", "Prisma", ".NET Framework API"],
+    skills: ["ExpressJS", "NestJS", ".NET Core", "PHP Laravel", "Prisma", ".NET Framework API", ".NET Framework", "ASP.NET", "Laravel"],
   },
   {
     title: "Database",
     color: "text-rose-400",
-    skills: ["T-SQL (SQL Server)", "Redis", "Microsoft SQL Server Management", "DBeaver", "PGAdmin", "SQL Server"],
+    skills: ["T-SQL (SQL Server)", "Redis", "Microsoft SQL Server Management", "DBeaver", "PGAdmin", "SQL Server", "LINQ", "T-SQL"],
   },
   {
     title: "DevOps & Tools",
     color: "text-indigo-300",
-    skills: ["Docker", "GitHub Actions", "AWS S3", "Vercel", "GIT command", "GIT"],
+    skills: ["Docker", "GitHub Actions", "AWS S3", "Vercel", "GIT command", "GIT", "CRUD", "HTTP", "API"],
   },
   {
     title: "Others",
     color: "text-teal-300",
-    skills: ["Visual Studio Code", "Cursor", "Windsurf", "POSTMAN", "AI prompt", "OBS", "Auth0"],
+    skills: ["Visual Studio Code", "Cursor", "Windsurf", "POSTMAN", "AI prompt", "OBS", "Auth0", "UX/UI"],
   },
 ]
 
@@ -1065,7 +1065,7 @@ export default function Portfolio() {
                           className={`hidden md:block absolute whitespace-nowrap text-xs font-semibold text-green-300 ${job.side === "left" ? "left-6" : "right-6"}`}
                         >
                           <GlitchText>
-                            {job.period} ({job.duration})
+                            {`${job.period} (${job.duration})`}
                           </GlitchText>
                         </div>
                       </div>
@@ -1104,7 +1104,7 @@ export default function Portfolio() {
                           <span className="flex md:hidden items-center gap-1">
                             <Calendar className="h-3 w-3" />
                             <GlitchText>
-                              {job.period} ({job.duration})
+                              {`${job.period} (${job.duration})`}
                             </GlitchText>
                           </span>
                           <span className="flex items-center gap-1">
