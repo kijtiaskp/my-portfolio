@@ -141,6 +141,74 @@
   }
 }
 
+/* Custom Portfolio Theme Colors */
+.text-primary-electric {
+  color: #00ff88;
+}
+
+.text-secondary-purple {
+  color: #8b5cf6;
+}
+
+.text-accent-blue {
+  color: #06b6d4;
+}
+
+.text-warning-orange {
+  color: #f97316;
+}
+
+.bg-dark-card {
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+.bg-dark-card\/50 {
+  background-color: rgba(15, 23, 42, 0.4);
+}
+
+.border-electric {
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+.border-electric\/20 {
+  border-color: rgba(0, 255, 136, 0.2);
+}
+
+.hover\:border-electric\/40:hover {
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+.bg-electric\/20 {
+  background-color: rgba(0, 255, 136, 0.2);
+}
+
+.hover\:bg-electric\/20:hover {
+  background-color: rgba(0, 255, 136, 0.2);
+}
+
+.shadow-electric {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.shadow-electric-glow {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+}
+
+/* Matrix Grid Background */
+.matrix-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Code Block Styling */
+.code-block {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -157,6 +225,38 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 255, 0, 0.5);
+}
+
+/* Terminal Cursor Blink Animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Terminal Scrollbar */
+.terminal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.4);
+  border-radius: 4px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.6);
 }
 
 /* Glitch Error Animation */

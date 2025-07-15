@@ -132,7 +132,45 @@ const HighlightKeywords = ({ text, keywordMap }: { text: string; keywordMap: Rec
   )
 }
 
-// Matrix Rain Component with original intensity
+// Helper function to get technology badge colors based on skillset categories
+const getTechBadgeColor = (tech: string): { bgColor: string; textColor: string; borderColor: string } => {
+  const techLower = tech.toLowerCase()
+  
+  // Frontend technologies
+  if (['next.js', 'react', 'reactts', 'vue.js', 'angularjs', 'tailwindcss', 'reactjs', 'vue 2', 'vue.js'].some(t => techLower.includes(t.toLowerCase()))) {
+    return { bgColor: 'bg-cyan-400/10', textColor: 'text-cyan-300', borderColor: 'border-cyan-400/20' }
+  }
+  
+  // Backend technologies
+  if (['expressjs', 'nestjs', '.net core', 'php laravel', 'prisma', '.net framework api', '.net framework', 'asp.net', 'laravel'].some(t => techLower.includes(t.toLowerCase()))) {
+    return { bgColor: 'bg-orange-400/10', textColor: 'text-orange-300', borderColor: 'border-orange-400/20' }
+  }
+  
+  // Programming languages
+  if (['javascript', 'typescript', 'c# asp.net', 'go', 'php', 'html5', 'css3', 'css', 'html', 'c#'].some(t => techLower.includes(t.toLowerCase()))) {
+    return { bgColor: 'bg-pink-400/10', textColor: 'text-pink-300', borderColor: 'border-pink-400/20' }
+  }
+  
+  // Database technologies
+  if (['t-sql', 'redis', 'sql server', 'dbeaver', 'pgadmin', 'linq'].some(t => techLower.includes(t.toLowerCase()))) {
+    return { bgColor: 'bg-rose-400/10', textColor: 'text-rose-300', borderColor: 'border-rose-400/20' }
+  }
+  
+  // DevOps & Tools
+  if (['docker', 'github actions', 'aws s3', 'vercel', 'git command', 'git', 'crud', 'http', 'api', 'aws', 'github', 'ci/cd'].some(t => techLower.includes(t.toLowerCase()))) {
+    return { bgColor: 'bg-indigo-300/10', textColor: 'text-indigo-300', borderColor: 'border-indigo-300/20' }
+  }
+  
+  // Others - catch-all for miscellaneous technologies
+  if (['google maps api', 'google maps', 'maps api', 'visual studio code', 'cursor', 'windsurf', 'postman', 'ai prompt', 'obs', 'auth0', 'ux/ui'].some(t => techLower.includes(t.toLowerCase()))) {
+    return { bgColor: 'bg-teal-300/10', textColor: 'text-teal-300', borderColor: 'border-teal-300/20' }
+  }
+  
+  // Default fallback
+  return { bgColor: 'bg-green-400/10', textColor: 'text-green-300', borderColor: 'border-green-400/20' }
+}
+
+// Enhanced Matrix Rain Component
 const MatrixRain = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -147,8 +185,8 @@ const MatrixRain = () => {
     canvas.height = window.innerHeight
 
     const matrixChars =
-      "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?"
-    const fontSize = 14
+      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|\\:;\"'<>?,.~/`functionconstvarletnewreturnifelseforthisclassexportimportasyncawaitdefintfloatboolstring"
+    const fontSize = 12
     const columns = canvas.width / fontSize
 
     const drops: number[] = []
@@ -157,25 +195,25 @@ const MatrixRain = () => {
     }
 
     const draw = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.04)" // Original background fill
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = "#00ff00"
       ctx.font = `${fontSize}px monospace`
 
       for (let i = 0; i < drops.length; i++) {
         const text = matrixChars[Math.floor(Math.random() * matrixChars.length)]
-        ctx.fillStyle = `rgba(0, 255, 0, ${Math.random()})` // Original character opacity
+        // Use our custom green color (#00ff88)
+        ctx.fillStyle = `rgba(0, 255, 136, ${Math.random() * 0.8 + 0.2})`
         ctx.fillText(text, i * fontSize, drops[i] * fontSize)
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
           drops[i] = 0
         }
         drops[i]++
       }
     }
 
-    const interval = setInterval(draw, 40) // Original interval
+    const interval = setInterval(draw, 50)
 
     const handleResize = () => {
       canvas.width = window.innerWidth
@@ -193,7 +231,7 @@ const MatrixRain = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-30" // Original opacity
+      className="fixed inset-0 pointer-events-none z-0 opacity-20"
       style={{ background: "transparent" }}
     />
   )
@@ -233,13 +271,23 @@ function AnimatedSection({
 export default function Portfolio() {
   const [currentCommand, setCurrentCommand] = useState("")
   const [terminalHistory, setTerminalHistory] = useState([
-    "Welcome to Kijtisak's portfolio!",
-    "Software Developer based in Bangkok, Thailand",
-    "Type 'help' to see available commands.",
+    { type: "output", content: "Linux portfolio-server 5.15.0-kijtisak #1 SMP" },
+    { type: "output", content: "Last login: " + new Date().toLocaleString() },
+    { type: "output", content: "Welcome to Kijtisak's development environment!" },
+    { type: "info", content: "Type 'help' to see available commands." },
   ])
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const [heroName, setHeroName] = useState("KIJTISAK PANGMEE")
   const { displayText: heroSubtitle } = useGlitchText("SOFTWARE DEVELOPER", true, true)
+
+  // Auto-scroll terminal to bottom
+  useEffect(() => {
+    const terminal = document.getElementById("terminal-scroll")
+    if (terminal) {
+      terminal.scrollTop = terminal.scrollHeight
+    }
+  }, [terminalHistory])
 
   const skillColorMap = useMemo(() => {
     return skillsData.reduce(
@@ -253,14 +301,80 @@ export default function Portfolio() {
     )
   }, [])
 
-  const commands = {
-    help: "Available commands: about, projects, experience, contact, skills, clear",
-    about: "Loading personal information...",
-    projects: "Loading project portfolio...",
-    experience: "Loading work experience...",
-    contact: "Loading contact information...",
-    skills: "Loading technical skills...",
-    clear: "Terminal cleared.",
+  const commands: Record<string, { type: string; content: string }[]> = {
+    help: [
+      { type: "output", content: "Available commands:" },
+      { type: "command", content: "whoami        - Display current user information" },
+      { type: "command", content: "ls -la        - List skills and technologies" },
+      { type: "command", content: "cat projects  - Show project portfolio" },
+      { type: "command", content: "tail -f logs  - View work experience" },
+      { type: "command", content: "ping contact  - Get contact information" },
+      { type: "command", content: "clear         - Clear terminal history" },
+      { type: "command", content: "neofetch      - Display system information" },
+    ],
+    whoami: [
+      { type: "output", content: "kijtisak" },
+    ],
+    neofetch: [
+      { type: "output", content: "                   -/+oossssoo+/-" },
+      { type: "output", content: "               `:+ssssssssssssssss+:`" },
+      { type: "output", content: "             -+ssssssssssssssssssss+-     OS: Kijtisak Linux" },
+      { type: "output", content: "           -+sssssssssssssssssssssss+-   Host: Software Developer" },
+      { type: "output", content: "         -+sssssssssssssssssssssssss+-   Kernel: 5+ years experience" },
+      { type: "output", content: "        `+sssssssssssssssssssssssss+`    Uptime: Available for hire" },
+      { type: "output", content: "        -+sssssssssssssssssssssss+-      Packages: JavaScript, TypeScript, React" },
+      { type: "output", content: "         .+sssssssssssssssssss+.        Shell: /bin/bash" },
+      { type: "output", content: "           `+sssssssssssssss+`          Terminal: portfolio-terminal" },
+      { type: "output", content: "             `:+ssssssss+:`             Location: Bangkok, Thailand" },
+    ],
+    ls: [
+      { type: "output", content: "total 42" },
+      { type: "output", content: "drwxr-xr-x  2 kijtisak dev  4096 Dec 15 2024 programming/" },
+      { type: "output", content: "drwxr-xr-x  2 kijtisak dev  4096 Dec 15 2024 frontend/" },
+      { type: "output", content: "drwxr-xr-x  2 kijtisak dev  4096 Dec 15 2024 backend/" },
+      { type: "output", content: "drwxr-xr-x  2 kijtisak dev  4096 Dec 15 2024 database/" },
+      { type: "output", content: "drwxr-xr-x  2 kijtisak dev  4096 Dec 15 2024 devops/" },
+      { type: "output", content: "-rw-r--r--  1 kijtisak dev  1337 Dec 15 2024 resume.pdf" },
+    ],
+    projects: [
+      { type: "output", content: "=== PROJECT PORTFOLIO ===" },
+      { type: "output", content: "" },
+      { type: "output", content: "[ACTIVE] e-wedding-card.git" },
+      { type: "output", content: "├── language: TypeScript 87.3%" },
+      { type: "output", content: "├── framework: Next.js 14.x" },
+      { type: "output", content: "├── services: Google Maps API, AWS S3" },
+      { type: "output", content: "├── deployment: Vercel" },
+      { type: "output", content: "├── pipeline: GitHub Actions CI/CD" },
+      { type: "output", content: "└── status: development branch" },
+      { type: "output", content: "" },
+      { type: "info", content: "git clone --depth=1 projects/*.git" },
+    ],
+    experience: [
+      { type: "output", content: "=== WORK EXPERIENCE LOG ===" },
+      { type: "output", content: "" },
+      { type: "output", content: "[2023-Present] Full Stack Developer" },
+      { type: "output", content: "  └─ ReactTS, Go, Vue.js, Auth0, PHP Laravel" },
+      { type: "output", content: "" },
+      { type: "output", content: "[2022-2023] Software Developer - BornToDev" },
+      { type: "output", content: "  └─ Vue.js, ReactTS, NestJS, Prisma" },
+      { type: "output", content: "" },
+      { type: "output", content: "[2021-2022] Full Stack Developer - Threesixty" },
+      { type: "output", content: "  └─ AngularJS, .NET Core 3.1 & 5.0" },
+      { type: "output", content: "" },
+      { type: "output", content: "[2018-2021] C# ASP.NET Developer - Double P" },
+      { type: "output", content: "  └─ .NET Framework, SQL Server, LINQ" },
+    ],
+    contact: [
+      { type: "output", content: "=== NETWORK INTERFACES ===" },
+      { type: "output", content: "" },
+      { type: "output", content: "eth0: email    -> kijtisak.pa@gmail.com" },
+      { type: "output", content: "eth1: phone    -> (+66) 80 733 0752" },
+      { type: "output", content: "eth2: location -> Bangkapi, Bangkok, 10240" },
+      { type: "output", content: "eth3: github   -> github.com/kijtisak" },
+      { type: "output", content: "eth4: linkedin -> linkedin.com/in/kijtisak" },
+      { type: "output", content: "" },
+      { type: "info", content: "All interfaces are UP and RUNNING" },
+    ],
   }
 
   // Special glitch effect for the hero name
@@ -305,18 +419,52 @@ export default function Portfolio() {
 
   const handleCommand = (cmd: string) => {
     const command = cmd.toLowerCase().trim()
+    
+    // Check if command is valid first
+    let responseKey = command
+    if (command === "ls -la" || command === "ls") responseKey = "ls"
+    if (command === "cat projects" || command === "projects") responseKey = "projects"
+    if (command === "tail -f logs" || command === "logs" || command === "history") responseKey = "experience"
+    if (command === "ping contact") responseKey = "contact"
+
+    const isValidCommand = command === "clear" || commands[responseKey]
+    
+    // Add command to history with appropriate color
+    setTerminalHistory((prev) => [...prev, { 
+      type: isValidCommand ? "command" : "invalid-command", 
+      content: `$ ${cmd}` 
+    }])
+    
     if (command === "clear") {
-      setTerminalHistory([])
+      setTimeout(() => {
+        setTerminalHistory([
+          { type: "output", content: "Terminal cleared." },
+          { type: "info", content: "Type 'help' to see available commands." },
+        ])
+      }, 100)
       return
     }
 
-    const response = commands[command as keyof typeof commands] || `Command '${command}' not recognized.`
-    setTerminalHistory((prev) => [...prev, `$ ${cmd}`, response])
-
-    if (["about", "projects", "experience", "contact", "skills"].includes(command)) {
+    const responses = commands[responseKey]
+    if (responses) {
       setTimeout(() => {
-        document.getElementById(command)?.scrollIntoView({ behavior: "smooth" })
-      }, 500)
+        setTerminalHistory((prev) => [...prev, ...responses])
+      }, 300)
+
+      // Auto-scroll to sections
+      if (["projects", "experience", "contact"].includes(responseKey)) {
+        setTimeout(() => {
+          document.getElementById(responseKey === "experience" ? "experience" : responseKey)?.scrollIntoView({ behavior: "smooth" })
+        }, 800)
+      }
+    } else {
+      setTimeout(() => {
+        setTerminalHistory((prev) => [
+          ...prev,
+          { type: "error", content: `bash: ${command}: command not found` },
+          { type: "info", content: "Type 'help' to see available commands." },
+        ])
+      }, 300)
     }
   }
 
@@ -341,44 +489,53 @@ export default function Portfolio() {
 
       {/* Navigation */}
       <motion.nav
-        className="fixed top-0 w-full bg-black/80 backdrop-blur-sm border-b border-green-400/20 z-50"
+        className="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-green-400/30 z-50"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <motion.div
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <Eye className="w-5 h-5 text-green-400" />
-              <span className="text-green-400 font-bold">
-                <GlitchText>kijtisak@localhost:~$</GlitchText>
-              </span>
+              <div className="w-8 h-8 bg-green-400 rounded border-2 border-green-400 flex items-center justify-center">
+                <span className="text-black font-bold text-sm">
+                  <GlitchText>K</GlitchText>
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-green-400 font-bold text-lg">
+                  <GlitchText>kijtisak@dev</GlitchText>
+                </span>
+                <span className="text-green-300/70 text-xs">
+                  <GlitchText>~/portfolio</GlitchText>
+                </span>
+              </div>
             </motion.div>
 
             <motion.div
-              className="hidden md:flex items-center space-x-4"
+              className="hidden md:flex items-center space-x-6"
               variants={staggerContainer}
               initial="initial"
               animate="animate"
             >
               {[
-                { href: "#about", text: "about" },
-                { href: "#projects", text: "projects" },
-                { href: "#experience", text: "experience" },
-                { href: "#contact", text: "contact" },
+                { href: "#about", text: "whoami", prefix: "$" },
+                { href: "#projects", text: "ls -la projects/", prefix: "$" },
+                { href: "#experience", text: "cat experience.log", prefix: "$" },
+                { href: "#contact", text: "curl -X POST /contact", prefix: "$" },
               ].map((item, index) => (
                 <motion.div key={index} variants={fadeInUp}>
                   <Link
                     href={item.href}
-                    className="flex items-center space-x-2 px-3 py-1 rounded hover:bg-green-400/10 transition-all duration-300 border border-transparent hover:border-green-400/20 group"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-green-400/20 transition-all duration-300 border border-transparent hover:border-green-400/40 group"
                   >
-                    <span className="text-green-400/80 group-hover:text-green-400 transition-colors">$</span>
-                    <span className="text-green-300/80 group-hover:text-green-300 transition-colors">
+                    <span className="text-green-400 text-sm font-mono">{item.prefix}</span>
+                    <span className="text-green-300 text-sm font-mono group-hover:text-green-200 transition-colors">
                       <GlitchText>{item.text}</GlitchText>
                     </span>
                   </Link>
@@ -387,203 +544,253 @@ export default function Portfolio() {
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-2 px-3 py-1 rounded bg-green-400/10 border border-green-400/20"
+              className="flex items-center space-x-3"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <Zap className="w-4 h-4 text-green-400" />
-              <span className="text-green-300">
-                <GlitchText>ONLINE</GlitchText>
-              </span>
-            </motion.div>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Hero Section */}
-      <section className="min-h-screen pt-20 flex items-center justify-center px-4 relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div className="space-y-6" variants={staggerContainer} initial="initial" animate="animate">
-              <motion.div className="space-y-4" variants={fadeInUp}>
-                <div className="flex items-center space-x-2 text-sm">
-                  <span className="text-green-400">$</span>
-                  <span className="text-green-300">
-                    <GlitchText>whoami</GlitchText>
-                  </span>
-                </div>
-                <h1 className="text-4xl lg:text-6xl font-bold text-green-400 min-h-[80px]">
-                  {heroName}
-                  <span className="animate-pulse">_</span>
-                </h1>
-                <div className="text-xl text-green-300 min-h-[60px]">
-                  {heroSubtitle}
-                  <span className="animate-pulse">_</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="bg-black/50 border border-green-400/20 p-4 rounded font-mono text-sm relative overflow-hidden"
-                variants={fadeInUp}
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-2 rounded-lg text-green-400 hover:bg-green-400/20 transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/5 to-transparent opacity-50"></div>
-                <div className="relative z-10">
-                  <div className="text-green-400 mb-2">
-                    <GlitchText>// SYSTEM.INFO</GlitchText>
-                  </div>
-                  <div className="text-green-300">
-                    <div>
-                      <GlitchText>{"{"}</GlitchText>
-                    </div>
-                    <div className="pl-4">
-                      <span>
-                        "<GlitchText>name</GlitchText>"
-                      </span>
-                      :{" "}
-                      <span>
-                        "<GlitchText>Kijtisak Pangmee</GlitchText>"
-                      </span>
-                      ,
-                      <br />
-                      <span>
-                        "<GlitchText>role</GlitchText>"
-                      </span>
-                      :{" "}
-                      <span>
-                        "<GlitchText>Software Developer</GlitchText>"
-                      </span>
-                      ,
-                      <br />
-                      <span>
-                        "<GlitchText>location</GlitchText>"
-                      </span>
-                      :{" "}
-                      <span>
-                        "<GlitchText>Bangkok, Thailand</GlitchText>"
-                      </span>
-                      ,
-                      <br />
-                      <span>
-                        "<GlitchText>status</GlitchText>"
-                      </span>
-                      :{" "}
-                      <span>
-                        "<GlitchText>Available for opportunities</GlitchText>"
-                      </span>
-                    </div>
-                    <div>
-                      <GlitchText>{"}"}</GlitchText>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div className="flex flex-wrap gap-4" variants={fadeInUp}>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button className="bg-green-400 text-black hover:bg-green-300 border border-green-400 font-mono transition-all duration-300">
-                    <Download className="w-4 h-4 mr-2" />
-                    <GlitchText>Download CV</GlitchText>
-                  </Button>
+                <motion.div
+                  animate={{ rotate: mobileMenuOpen ? 45 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {mobileMenuOpen ? (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  )}
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    variant="outline"
-                    className="border-green-400 text-green-400 hover:bg-green-400/10 bg-transparent font-mono transition-all duration-300"
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    <GlitchText>Contact Me</GlitchText>
-                  </Button>
-                </motion.div>
-              </motion.div>
+              </button>
 
-              <motion.div className="flex space-x-4" variants={fadeInUp}>
-                {[Github, Linkedin, Mail].map((Icon, index) => (
-                  <motion.div key={index} whileHover={{ y: -2, scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="text-green-400 hover:text-green-300 border border-green-400/20 hover:bg-green-400/10 transition-all duration-300"
-                    >
-                      <Icon className="w-5 h-5" />
-                    </Button>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* Terminal Window */}
-            <motion.div
-              className="bg-black border-2 border-green-400/30 rounded-lg overflow-hidden shadow-lg relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent"></div>
-              <div className="relative z-10">
-                <div className="flex items-center justify-between px-4 py-2 bg-green-400/10 border-b border-green-400/20">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                  </div>
-                  <div className="text-sm text-green-400 font-mono">
-                    <GlitchText>/dev/ttyS0</GlitchText>
-                  </div>
-                  <div className="w-16"></div>
-                </div>
-
-                <div className="p-4 h-80 overflow-y-auto bg-black">
-                  <div className="space-y-2 text-sm font-mono">
-                    {terminalHistory.map((line, index) => (
-                      <motion.div
-                        key={index}
-                        className={line.startsWith("$") ? "text-green-400" : "text-green-300"}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                      >
-                        <GlitchText>{line}</GlitchText>
-                      </motion.div>
-                    ))}
-
-                    <div className="flex items-center space-x-2">
-                      <span className="text-green-400">$</span>
-                      <input
-                        type="text"
-                        value={currentCommand}
-                        onChange={(e) => setCurrentCommand(e.target.value)}
-                        onKeyPress={(e) => {
-                          if (e.key === "Enter") {
-                            handleCommand(currentCommand)
-                            setCurrentCommand("")
-                          }
-                        }}
-                        className="flex-1 bg-transparent border-none outline-none text-green-400 font-mono"
-                        placeholder="Type a command..."
-                        autoFocus
-                      />
-                      <div className="w-2 h-4 bg-green-400 animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
+              <div className="hidden md:flex items-center space-x-2 px-3 py-2 rounded-lg bg-green-400/20 border border-green-400/40">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                <span className="text-green-300 text-sm font-mono">
+                  <GlitchText>ACTIVE</GlitchText>
+                </span>
               </div>
             </motion.div>
           </div>
 
+          {/* Mobile Menu */}
           <motion.div
-            className="flex justify-center mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
+            className="md:hidden"
+            initial={false}
+            animate={{
+              height: mobileMenuOpen ? "auto" : 0,
+              opacity: mobileMenuOpen ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            style={{ overflow: "hidden" }}
           >
+            <div className="px-4 py-4 space-y-3 bg-black/90 border-t border-green-400/30">
+              {[
+                { href: "#about", text: "whoami", prefix: "$" },
+                { href: "#projects", text: "ls -la projects/", prefix: "$" },
+                { href: "#experience", text: "cat experience.log", prefix: "$" },
+                { href: "#contact", text: "curl -X POST /contact", prefix: "$" },
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-400/20 transition-all duration-300 border border-transparent hover:border-green-400/40"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="text-green-400 font-mono text-sm">{item.prefix}</span>
+                  <span className="text-green-300 font-mono text-sm">
+                    <GlitchText>{item.text}</GlitchText>
+                  </span>
+                </Link>
+              ))}
+              
+              <div className="pt-3 mt-3 border-t border-green-400/20">
+                <div className="flex items-center justify-center space-x-2 px-3 py-2 rounded-lg bg-green-400/20 border border-green-400/40">
+                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                  <span className="text-green-300 text-sm font-mono">
+                    <GlitchText>ACTIVE</GlitchText>
+                  </span>
+                </div>
+              </div>
+            </div>
+                    </motion.div>
+        </div>
+      </motion.nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen pt-24 flex items-center justify-center px-4 relative z-10 matrix-grid">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center space-y-8">
+            {/* Profile Card */}
             <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              className="inline-block"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
             >
-              <ChevronDown className="w-6 h-6 text-green-400" />
+              <div className="relative">
+                <div className="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br from-green-400/20 to-slate-800/50 border-2 border-green-400/40 flex items-center justify-center shadow-electric-glow">
+                  <span className="text-6xl font-bold text-green-400">
+                    <GlitchText>K</GlitchText>
+                  </span>
+                </div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full animate-pulse shadow-electric"></div>
+              </div>
             </motion.div>
-          </motion.div>
+
+            {/* Name and Title */}
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-green-400 via-green-300 to-green-500 bg-clip-text text-transparent">
+                {heroName}
+              </h1>
+              <div className="text-2xl lg:text-3xl text-slate-300">
+                {heroSubtitle}
+              </div>
+            </motion.div>
+
+            {/* Interactive Terminal */}
+            <motion.div
+              className="max-w-4xl mx-auto code-block rounded-xl overflow-hidden relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="flex items-center justify-between px-6 py-3 bg-black/80 border-b border-green-400/30 backdrop-blur-sm">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-400/80 border border-red-400/40"></div>
+                  <div className="w-3 h-3 rounded-full bg-orange-400/80 border border-orange-400/40"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-400 border border-green-400/60 shadow-sm shadow-green-400/50"></div>
+                </div>
+                <span className="text-green-300 text-sm font-mono tracking-wider">kijtisak@dev:~</span>
+                <div className="w-12"></div>
+              </div>
+              
+              <div className="p-4 h-96 overflow-y-auto bg-black terminal-scroll" id="terminal-scroll">
+                <div className="font-mono text-sm space-y-1 text-left">
+                  {terminalHistory.map((line, index) => (
+                    <div
+                      key={index}
+                      className={
+                        line.type === "command"
+                          ? "text-green-400"
+                          : line.type === "invalid-command"
+                          ? "text-red-400"
+                          : line.type === "error"
+                          ? "text-red-400"
+                          : line.type === "info"
+                          ? "text-yellow-400"
+                          : "text-slate-300"
+                      }
+                    >
+                      <pre className="whitespace-pre-wrap font-mono text-left">
+                        {line.content}
+                      </pre>
+                    </div>
+                  ))}
+
+                  <div className="flex items-center space-x-1 pt-2">
+                    <span className="text-green-400">$</span>
+                    <input
+                      type="text"
+                      value={currentCommand}
+                      onChange={(e) => setCurrentCommand(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleCommand(currentCommand)
+                          setCurrentCommand("")
+                        }
+                      }}
+                      className="flex-1 bg-transparent border-none outline-none text-green-400 font-mono text-left"
+                      placeholder="Type a command (try 'help')..."
+                      autoFocus
+                    />
+                    <div className="w-2 h-4 bg-green-400 animate-blink ml-0"></div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="bg-green-400 text-black hover:bg-green-300 border border-green-400 font-mono transition-all duration-300 shadow-electric">
+                  <Download className="w-4 h-4 mr-2" />
+                  <GlitchText>./download_cv.sh</GlitchText>
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  variant="outline"
+                  className="border-green-400/50 text-green-400 hover:bg-green-400/10 bg-transparent font-mono transition-all duration-300"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  <GlitchText>ssh contact@kijtisak.dev</GlitchText>
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Network Connections */}
+            <motion.div
+              className="flex justify-center space-x-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              {[
+                { Icon: Github, label: "git clone github.com/kijtisak", color: "hover:text-green-300 hover:bg-green-400/20" },
+                { Icon: Linkedin, label: "ssh linkedin://kijtisak", color: "hover:text-green-300 hover:bg-green-400/20" },
+                { Icon: Mail, label: "telnet kijtisak.pa@gmail.com", color: "hover:text-green-300 hover:bg-green-400/20" },
+              ].map(({ Icon, label, color }, index) => (
+                <motion.div
+                  key={label}
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className={`text-green-400/80 ${color} border border-green-400/30 hover:border-green-400 transition-all duration-300 font-mono`}
+                    title={label}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </Button>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              className="flex justify-center mt-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                className="text-green-400/70"
+              >
+                <ChevronDown className="w-6 h-6" />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -600,11 +807,11 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <span className="text-green-400">$</span>
-            <span className="text-green-300">
-              <GlitchText>cat</GlitchText>
+            <span className="text-green-300 mx-1">
+              <GlitchText>cat /proc/cpuinfo</GlitchText>
             </span>
             <span className="text-green-500">
-              <GlitchText>about.json</GlitchText>
+              <GlitchText>| grep "model name"</GlitchText>
             </span>
           </motion.div>
 
@@ -616,9 +823,9 @@ export default function Portfolio() {
               whileInView="animate"
               viewport={{ once: true }}
             >
-              <motion.h2 className="text-3xl font-bold text-green-400 min-h-[50px]" variants={fadeInUp}>
-                <GlitchText persistent>ABOUT ME</GlitchText>
-              </motion.h2>
+                        <motion.h2 className="text-3xl font-bold text-green-400 min-h-[50px]" variants={fadeInUp}>
+            <GlitchText persistent>SYSTEM INFORMATION</GlitchText>
+          </motion.h2>
 
               <motion.div
                 className="bg-black border-2 border-green-400/20 rounded-lg p-6 relative overflow-hidden"
@@ -816,11 +1023,11 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <span className="text-green-400">$</span>
-            <span className="text-green-300">
-              <GlitchText>ls</GlitchText>
+            <span className="text-green-300 mx-1">
+              <GlitchText>find /usr/local/bin</GlitchText>
             </span>
             <span className="text-green-500">
-              <GlitchText>skills/ --tree</GlitchText>
+              <GlitchText>-type f -executable</GlitchText>
             </span>
           </motion.div>
 
@@ -831,7 +1038,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <GlitchText persistent>SKILLSET</GlitchText>
+              <GlitchText persistent>INSTALLED PACKAGES</GlitchText>
             </motion.h3>
 
             <motion.div
@@ -888,11 +1095,11 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <span className="text-green-400">$</span>
-            <span className="text-green-300">
-              <GlitchText>ls</GlitchText>
+            <span className="text-green-300 mx-1">
+              <GlitchText>git log --oneline</GlitchText>
             </span>
             <span className="text-green-500">
-              <GlitchText>projects/</GlitchText>
+              <GlitchText>--graph --all</GlitchText>
             </span>
           </motion.div>
 
@@ -925,15 +1132,18 @@ export default function Portfolio() {
                 <CardContent className="mt-auto relative z-10">
                   <div className="space-y-4">
                     <div className="flex flex-wrap gap-2">
-                      {["Next.js", "React", "Google Maps API", "AWS S3", "GitHub Actions", "Vercel"].map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="bg-blue-400/10 text-blue-300 border border-blue-400/20 font-mono hover:bg-green-400/20 transition-colors"
-                        >
-                          <GlitchText>{tech}</GlitchText>
-                        </Badge>
-                      ))}
+                      {["Next.js", "React", "Google Maps API", "AWS S3", "GitHub Actions", "Vercel"].map((tech) => {
+                        const { bgColor, textColor, borderColor } = getTechBadgeColor(tech)
+                        return (
+                          <Badge
+                            key={tech}
+                            variant="secondary"
+                            className={`${bgColor} ${textColor} border ${borderColor} font-mono hover:bg-green-400/20 transition-colors`}
+                          >
+                            <GlitchText>{tech}</GlitchText>
+                          </Badge>
+                        )
+                      })}
                     </div>
                     <div className="flex space-x-2">
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -976,9 +1186,12 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <span className="text-green-300 mr-2">$</span>
-            <span>
-              <GlitchText>tree experiences/</GlitchText>
+            <span className="text-green-400">$</span>
+            <span className="text-green-300 mx-1">
+              <GlitchText>tail -f /var/log/career.log</GlitchText>
+            </span>
+            <span className="text-green-500">
+              <GlitchText>| grep -E "^[0-9]"</GlitchText>
             </span>
           </motion.div>
 
@@ -988,9 +1201,8 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            My{" "}
             <span className="text-green-400">
-              <GlitchText persistent>Experiences</GlitchText>
+              <GlitchText persistent>PROCESS HISTORY</GlitchText>
             </span>
           </motion.h2>
 
@@ -1139,11 +1351,11 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <span className="text-green-400">$</span>
-            <span className="text-green-300">
-              <GlitchText>curl</GlitchText>
+            <span className="text-green-300 mx-1">
+              <GlitchText>netstat -tuln</GlitchText>
             </span>
             <span className="text-green-500">
-              <GlitchText>-X POST /contact</GlitchText>
+              <GlitchText>| grep :80</GlitchText>
             </span>
           </motion.div>
 
@@ -1156,9 +1368,8 @@ export default function Portfolio() {
               viewport={{ once: true }}
             >
               <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-green-400 font-mono">
-                CONTACT{" "}
-                <span className="text-green-300">
-                  <GlitchText persistent>INFO</GlitchText>
+                <span className="text-green-400">
+                  <GlitchText persistent>NETWORK INTERFACES</GlitchText>
                 </span>
               </motion.h2>
 
@@ -1278,7 +1489,7 @@ export default function Portfolio() {
             <div className="flex items-center space-x-2 text-green-300 font-mono">
               <span className="text-green-400">$</span>
               <span>
-                <GlitchText>© 2024 Kijtisak Pangmee. All rights reserved.</GlitchText>
+                <GlitchText>echo "© 2024 Kijtisak Pangmee" &gt; /dev/null && exit 0</GlitchText>
               </span>
             </div>
             <div className="flex items-center space-x-4">
