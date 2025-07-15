@@ -1050,7 +1050,7 @@ export default function Portfolio() {
                     className={`relative flex items-center w-full mb-8 ${job.side === "left" ? "md:justify-start" : "md:justify-end"}`}
                   >
                     <motion.div
-                      className="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10"
+                      className="absolute left-[-8px] md:left-[49.4%] transform -translate-x-1/2 z-10"
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
@@ -1058,7 +1058,7 @@ export default function Portfolio() {
                     >
                       <div className="relative flex items-center justify-center">
                         <div
-                          className={`w-4 h-4 ${job.current ? "bg-green-400 animate-pulse" : "bg-green-500"} rounded-full border-2 border-black shadow-lg`}
+                          className={`w-4 h-4 ${job.current ? "bg-green-400 animate-pulse" : "bg-green-500"} rounded-full shadow-lg`}
                         ></div>
 
                         <div
