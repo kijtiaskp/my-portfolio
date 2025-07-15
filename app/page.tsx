@@ -893,30 +893,13 @@ export default function Portfolio() {
               </motion.div>
 
               {/* Interactive Terminal */}
-              <motion.div
-                className="code-block rounded-xl overflow-hidden relative shadow-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                whileHover={{ y: -5 }}
-              >
+              <div className="code-block rounded-xl overflow-hidden relative shadow-2xl">
                 {/* Terminal Header */}
                 <div className="flex items-center justify-between px-4 py-3 bg-black/90 border-b border-green-400/30 backdrop-blur-sm relative">
                   <div className="flex space-x-2">
-                    <motion.div
-                      className="w-3 h-3 rounded-full bg-red-400/80 border border-red-400/40"
-                      whileHover={{ scale: 1.2 }}
-                    />
-                    <motion.div
-                      className="w-3 h-3 rounded-full bg-orange-400/80 border border-orange-400/40"
-                      whileHover={{ scale: 1.2 }}
-                    />
-                    <motion.div
-                      className="w-3 h-3 rounded-full bg-green-400 border border-green-400/60 shadow-sm shadow-green-400/50"
-                      whileHover={{ scale: 1.2 }}
-                      animate={{ boxShadow: ["0 0 5px rgba(0,255,136,0.5)", "0 0 10px rgba(0,255,136,0.8)", "0 0 5px rgba(0,255,136,0.5)"] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
+                    <div className="w-3 h-3 rounded-full bg-red-400/80 border border-red-400/40" />
+                    <div className="w-3 h-3 rounded-full bg-orange-400/80 border border-orange-400/40" />
+                    <div className="w-3 h-3 rounded-full bg-green-400 border border-green-400/60 shadow-sm shadow-green-400/50" />
                   </div>
                   <span className="text-green-300 text-sm font-mono tracking-wider">kijtisak@dev:~</span>
                   <div className="w-12"></div>
@@ -926,7 +909,7 @@ export default function Portfolio() {
                 <div className="p-4 h-80 overflow-y-auto bg-black/95 terminal-scroll" id="terminal-scroll">
                   <div className="font-mono text-sm space-y-1 text-left">
                     {terminalHistory.map((line, index) => (
-                      <motion.div
+                      <div
                         key={index}
                         className={
                           line.type === "command"
@@ -939,14 +922,11 @@ export default function Portfolio() {
                                   ? "text-yellow-400"
                                   : "text-slate-300"
                         }
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
                       >
                         <pre className="whitespace-pre-wrap font-mono text-left">
                           {line.content}
                         </pre>
-                      </motion.div>
+                      </div>
                     ))}
 
                     <div className="flex items-center space-x-1 pt-2">
@@ -965,15 +945,11 @@ export default function Portfolio() {
                         placeholder="Type 'help' to start..."
                         autoFocus
                       />
-                      <motion.div
-                        className="w-2 h-4 bg-green-400 ml-0"
-                        animate={{ opacity: [1, 0, 1] }}
-                        transition={{ duration: 1, repeat: Infinity }}
-                      />
+                      <div className="w-2 h-4 bg-green-400 ml-0 animate-pulse" />
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Floating Code Snippets */}
               <motion.div
