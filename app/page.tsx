@@ -135,37 +135,37 @@ const HighlightKeywords = ({ text, keywordMap }: { text: string; keywordMap: Rec
 // Helper function to get technology badge colors based on skillset categories
 const getTechBadgeColor = (tech: string): { bgColor: string; textColor: string; borderColor: string } => {
   const techLower = tech.toLowerCase()
-  
+
   // Frontend technologies
   if (['next.js', 'react', 'reactts', 'vue.js', 'angularjs', 'tailwindcss', 'reactjs', 'vue 2', 'vue.js'].some(t => techLower.includes(t.toLowerCase()))) {
     return { bgColor: 'bg-cyan-400/10', textColor: 'text-cyan-300', borderColor: 'border-cyan-400/20' }
   }
-  
+
   // Backend technologies
   if (['expressjs', 'nestjs', '.net core', 'php laravel', 'prisma', '.net framework api', '.net framework', 'asp.net', 'laravel'].some(t => techLower.includes(t.toLowerCase()))) {
     return { bgColor: 'bg-orange-400/10', textColor: 'text-orange-300', borderColor: 'border-orange-400/20' }
   }
-  
+
   // Programming languages
   if (['javascript', 'typescript', 'c# asp.net', 'go', 'php', 'html5', 'css3', 'css', 'html', 'c#'].some(t => techLower.includes(t.toLowerCase()))) {
     return { bgColor: 'bg-pink-400/10', textColor: 'text-pink-300', borderColor: 'border-pink-400/20' }
   }
-  
+
   // Database technologies
   if (['t-sql', 'redis', 'sql server', 'dbeaver', 'pgadmin', 'linq'].some(t => techLower.includes(t.toLowerCase()))) {
     return { bgColor: 'bg-rose-400/10', textColor: 'text-rose-300', borderColor: 'border-rose-400/20' }
   }
-  
+
   // DevOps & Tools
   if (['docker', 'github actions', 'aws s3', 'vercel', 'git command', 'git', 'crud', 'http', 'api', 'aws', 'github', 'ci/cd'].some(t => techLower.includes(t.toLowerCase()))) {
     return { bgColor: 'bg-indigo-300/10', textColor: 'text-indigo-300', borderColor: 'border-indigo-300/20' }
   }
-  
+
   // Others - catch-all for miscellaneous technologies
   if (['google maps api', 'google maps', 'maps api', 'visual studio code', 'cursor', 'windsurf', 'postman', 'ai prompt', 'obs', 'auth0', 'ux/ui'].some(t => techLower.includes(t.toLowerCase()))) {
     return { bgColor: 'bg-teal-300/10', textColor: 'text-teal-300', borderColor: 'border-teal-300/20' }
   }
-  
+
   // Default fallback
   return { bgColor: 'bg-green-400/10', textColor: 'text-green-300', borderColor: 'border-green-400/20' }
 }
@@ -419,7 +419,7 @@ export default function Portfolio() {
 
   const handleCommand = (cmd: string) => {
     const command = cmd.toLowerCase().trim()
-    
+
     // Check if command is valid first
     let responseKey = command
     if (command === "ls -la" || command === "ls") responseKey = "ls"
@@ -428,13 +428,13 @@ export default function Portfolio() {
     if (command === "ping contact") responseKey = "contact"
 
     const isValidCommand = command === "clear" || commands[responseKey]
-    
+
     // Add command to history with appropriate color
-    setTerminalHistory((prev) => [...prev, { 
-      type: isValidCommand ? "command" : "invalid-command", 
-      content: `$ ${cmd}` 
+    setTerminalHistory((prev) => [...prev, {
+      type: isValidCommand ? "command" : "invalid-command",
+      content: `$ ${cmd}`
     }])
-    
+
     if (command === "clear") {
       setTimeout(() => {
         setTerminalHistory([
@@ -610,7 +610,7 @@ export default function Portfolio() {
                   </span>
                 </Link>
               ))}
-              
+
               <div className="pt-3 mt-3 border-t border-green-400/20">
                 <div className="flex items-center justify-center space-x-2 px-3 py-2 rounded-lg bg-green-400/20 border border-green-400/40">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
@@ -620,7 +620,7 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
-                    </motion.div>
+          </motion.div>
         </div>
       </motion.nav>
 
@@ -676,7 +676,7 @@ export default function Portfolio() {
                 <span className="text-green-300 text-sm font-mono tracking-wider">kijtisak@dev:~</span>
                 <div className="w-12"></div>
               </div>
-              
+
               <div className="p-4 h-96 overflow-y-auto bg-black terminal-scroll" id="terminal-scroll">
                 <div className="font-mono text-sm space-y-1 text-left">
                   {terminalHistory.map((line, index) => (
@@ -686,12 +686,12 @@ export default function Portfolio() {
                         line.type === "command"
                           ? "text-green-400"
                           : line.type === "invalid-command"
-                          ? "text-red-400"
-                          : line.type === "error"
-                          ? "text-red-400"
-                          : line.type === "info"
-                          ? "text-yellow-400"
-                          : "text-slate-300"
+                            ? "text-red-400"
+                            : line.type === "error"
+                              ? "text-red-400"
+                              : line.type === "info"
+                                ? "text-yellow-400"
+                                : "text-slate-300"
                       }
                     >
                       <pre className="whitespace-pre-wrap font-mono text-left">
@@ -823,9 +823,9 @@ export default function Portfolio() {
               whileInView="animate"
               viewport={{ once: true }}
             >
-                        <motion.h2 className="text-3xl font-bold text-green-400 min-h-[50px]" variants={fadeInUp}>
-            <GlitchText persistent>SYSTEM INFORMATION</GlitchText>
-          </motion.h2>
+              <motion.h2 className="text-3xl font-bold text-green-400 min-h-[50px]" variants={fadeInUp}>
+                <GlitchText persistent>SYSTEM INFORMATION</GlitchText>
+              </motion.h2>
 
               <motion.div
                 className="bg-black border-2 border-green-400/20 rounded-lg p-6 relative overflow-hidden"
