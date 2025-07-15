@@ -64,7 +64,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
   }
 }
 
@@ -157,4 +157,60 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 255, 0, 0.5);
+}
+
+/* Glitch Error Animation */
+.glitch-error {
+  animation: glitch-error-animation 0.3s infinite;
+}
+
+@keyframes glitch-error-animation {
+  0% {
+    text-shadow: 
+      -1px 0 0 #ff0000,
+      1px 0 0 #00ff00,
+      0 -1px 0 #ff0000,
+      0 1px 0 #00ff00;
+    color: inherit;
+  }
+  20% {
+    text-shadow: 
+      -2px 0 0 #ff4444,
+      2px 0 0 #44ff44,
+      0 -2px 0 #ff0000,
+      0 2px 0 #00ff00;
+    color: #ff0044;
+  }
+  40% {
+    text-shadow: 
+      2px 0 0 #ff0000,
+      -2px 0 0 #00ff00,
+      1px -1px 0 #ff4444,
+      -1px 1px 0 #44ff44;
+    color: #ff6666;
+  }
+  60% {
+    text-shadow: 
+      0 0 0 #ff0000,
+      3px 0 0 #00ff00,
+      -1px -2px 0 #ff0044,
+      1px 2px 0 #44ff44;
+    color: inherit;
+  }
+  80% {
+    text-shadow: 
+      -3px 0 0 #ff0000,
+      1px 0 0 #00ff00,
+      2px -1px 0 #ff4444,
+      -2px 1px 0 #44ff44;
+    color: #ff3333;
+  }
+  100% {
+    text-shadow: 
+      -1px 0 0 #ff0000,
+      1px 0 0 #00ff00,
+      0 -1px 0 #ff0000,
+      0 1px 0 #00ff00;
+    color: inherit;
+  }
 }

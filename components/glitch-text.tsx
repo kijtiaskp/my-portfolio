@@ -21,8 +21,10 @@ export function GlitchText({ children, className = "", delay = 0, persistent = f
   return (
     <span
       ref={ref}
-      className={`${className} ${isGlitching ? "animate-pulse" : ""}`}
-      style={{ animationDelay: `${delay}ms` }}
+      className={`${className} ${isGlitching ? "animate-pulse glitch-error" : ""}`}
+      style={{ 
+        animationDelay: `${delay}ms`
+      }}
     >
       {displayText}
     </span>
