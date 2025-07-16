@@ -4,7 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { GlitchText } from "@/components/glitch-text"
 import { navigationItems, fadeInUp, staggerContainer } from "@/data/portfolio-data"
-import { scrollToElement } from "@/utils/portfolio-utils"
+import { scrollToElement } from "@/data/portfolio-data"
 
 export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

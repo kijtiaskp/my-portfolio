@@ -1,45 +1,48 @@
-import { 
-  SkillCategory, 
-  Experience, 
-  NavigationItem, 
-  ContactInfo, 
+import {
+  SkillCategory,
+  Experience,
+  NavigationItem,
+  ContactInfo,
   Commands,
-  Project
+  Project,
+  TechBadgeColors
 } from "@/types/portfolio"
 
+// ===== SKILLS DATA =====
 export const skillsData: SkillCategory[] = [
   {
     title: "Programming",
     color: "text-pink-400",
-    skills: ["JavaScript", "TypeScript", "C# ASP.NET", "Go", "PHP", "HTML5", "CSS3", "CSS", "HTML", "C#"],
+    skills: ["C# ASP.NET", "CSS3", "Go", "HTML5", "JavaScript", "PHP", "TypeScript"],
   },
   {
     title: "Frontend",
     color: "text-cyan-400",
-    skills: ["ReactTS", "Vue.JS", "AngularJS", "Next.js", "TailwindCSS", "ReactJS", "Vue 2", "Vue.js", "React"],
+    skills: ["Angular", "Next.js", "React (JS/TS)", "TailwindCSS", "Vue.js (v. 2/3)"],
   },
   {
     title: "Backend",
     color: "text-orange-400",
-    skills: ["ExpressJS", "Express.js", "NestJS", ".NET Core", "PHP Laravel", "Prisma", ".NET Framework API", ".NET Framework", "ASP.NET", "Laravel"],
+    skills: [".NET Core", ".NET Framework", "Express.js", "Laravel", "NestJS", "Prisma"],
   },
   {
     title: "Database",
     color: "text-rose-400",
-    skills: ["T-SQL (SQL Server)", "Redis", "Microsoft SQL Server Management", "DBeaver", "PGAdmin", "SQL Server", "LINQ", "T-SQL"],
+    skills: ["CRUD", "DBeaver", "LINQ", "PGAdmin", "Redis", "SQL Server"],
   },
   {
     title: "DevOps & Tools",
     color: "text-indigo-300",
-    skills: ["Docker", "GitHub Actions", "AWS S3", "Vercel", "GIT command", "GIT", "Git", "CRUD", "HTTP", "API", "Jest", "Google Maps API"],
+    skills: ["AWS S3", "Docker", "GIT", "GIT command", "GitHub Actions", "Google Maps API", "Vercel"],
   },
   {
     title: "Others",
     color: "text-teal-300",
-    skills: ["Visual Studio Code", "Cursor", "Windsurf", "POSTMAN", "AI prompt", "OBS", "Auth0", "UX/UI"],
+    skills: ["AI prompt", "Auth0", "Cursor", "OBS", "POSTMAN", "UX/UI", "Visual Studio Code", "Windsurf"],
   },
 ]
 
+// ===== EXPERIENCE DATA =====
 export const experienceData: Experience[] = [
   {
     title: "Full stack developer",
@@ -48,8 +51,8 @@ export const experienceData: Experience[] = [
     duration: "Ongoing",
     location: "Bangkok, Thailand",
     description:
-      "Developed a web-application frontend for event queue management using ReactTS. Contributed to multiple CMS projects (Backend Go, ReactTS/ExpressJS, Vue 2) by adding/modifying sprint-assigned features, integrating Auth0, refactoring codebase, and restructuring files for easier maintenance. Also worked on a Web Store/CMS (Vue 2 / PHP Laravel legacy code) adding features and unit tests across frontend and backend.",
-    technologies: ["React", "TypeScript", "Next.js", "Vue.js", "Go", "Express.js", "Auth0", "PHP", "Laravel", "Jest"],
+      "Developed a web-application frontend for event queue management using ReactTS. Contributed to multiple CMS projects (Backend Go, ReactTS/Express.js, Vue 2) by adding/modifying sprint-assigned features, integrating Auth0, refactoring codebase, and restructuring files for easier maintenance. Also worked on a Web Store/CMS (Vue 2 / PHP Laravel legacy code) adding features and unit tests across frontend and backend.",
+    technologies: ["React", "TypeScript", "Next.js", "Vue.js", "Go", "Express.js", "Auth0", "PHP", "Laravel"],
     current: true,
     side: "left",
   },
@@ -60,8 +63,8 @@ export const experienceData: Experience[] = [
     duration: "1 year 5 months",
     location: "Bangkok, Thailand",
     description:
-      "Developed JavaScript, HTML, CSS for web applications using Vue.js and ReactTS. Developed API services with NestJS and Prisma. Actively discussed UX/UI improvements and reported issues to graphic designers.",
-    technologies: ["React", "TypeScript", "Vue.js", "NestJS", "Prisma", "JavaScript", "HTML", "CSS"],
+      "Developed JavaScript, HTML, CSS3 for web applications using Vue.js and ReactTS. Developed API services with NestJS and Prisma. Actively discussed UX/UI improvements and reported issues to graphic designers.",
+    technologies: ["React", "TypeScript", "Vue.js", "NestJS", "Prisma", "JavaScript", "HTML"],
     current: false,
     side: "right",
   },
@@ -72,8 +75,8 @@ export const experienceData: Experience[] = [
     duration: "10 months",
     location: "Bangkok, Thailand",
     description:
-      "Developed TypeScript, HTML, CSS, and JavaScript for web application pages. Connected HTTP services from .NET Core backend API. Discussed UX/UI design with CTO and presented alternative designs. Developed API services for frontend web applications.",
-    technologies: ["Angular", "TypeScript", ".NET Core", "C#", "JavaScript", "HTML", "CSS", "HTTP"],
+      "Developed TypeScript, HTML, CSS, and JavaScript for web application pages. Connected HTTP services from .NET Core API. Discussed UX/UI design with CTO and presented alternative designs. Developed API services for frontend web applications.",
+    technologies: ["Angular", "TypeScript", ".NET Core", "C#", "JavaScript", "HTML"],
     current: false,
     side: "left",
   },
@@ -85,12 +88,13 @@ export const experienceData: Experience[] = [
     location: "Bangkok, Thailand",
     description:
       "Designed and developed based on business analysis assignments. Fixed bugs in existing web applications. Utilized GIT for project management. Performed technical analyses for new feature development and maintained existing web applications. Developed .NET Core API using LINQ for SQL Server data manipulation (protected against SQL Injection) and .NET Framework API for CRUD operations via query statements. Responsible for setting up web applications and deployment on UAT and production client servers.",
-    technologies: ["C#", "ASP.NET", ".NET Core", ".NET Framework", "SQL Server", "LINQ", "Git"],
+    technologies: ["C#", ".NET Core", ".NET Framework", "SQL Server", "LINQ", "GIT"],
     current: false,
     side: "right",
   },
 ]
 
+// ===== PROJECTS DATA =====
 export const projectsData: Project[] = [
   {
     title: "E-WEDDING CARD",
@@ -101,6 +105,7 @@ export const projectsData: Project[] = [
   },
 ]
 
+// ===== NAVIGATION DATA =====
 export const navigationItems: NavigationItem[] = [
   { href: "#about", text: "whoami", prefix: "$" },
   { href: "#projects", text: "ls -la projects/", prefix: "$" },
@@ -108,6 +113,7 @@ export const navigationItems: NavigationItem[] = [
   { href: "#contact", text: "curl -X POST /contact", prefix: "$" },
 ]
 
+// ===== CONTACT DATA =====
 export const contactInfo: ContactInfo = {
   email: "kijtisak.pa@gmail.com",
   phone: "(+66) 80 733 0752",
@@ -116,6 +122,7 @@ export const contactInfo: ContactInfo = {
   linkedin: "linkedin.com/in/kijtisak",
 }
 
+// ===== TERMINAL COMMANDS =====
 export const terminalCommands: Commands = {
   help: [
     { type: "output", content: "Available commands:" },
@@ -192,6 +199,7 @@ export const terminalCommands: Commands = {
   ],
 }
 
+// ===== OTHER DATA =====
 export const subtitleTexts = [
   "SOFTWARE DEVELOPER",
   "GAMER",
@@ -199,7 +207,7 @@ export const subtitleTexts = [
   "POTTERHEAD",
 ]
 
-// Animation variants
+// ===== ANIMATION VARIANTS =====
 export const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -212,4 +220,50 @@ export const staggerContainer = {
       staggerChildren: 0.1,
     },
   },
+}
+
+// ===== UTILITY FUNCTIONS =====
+
+// Function to get technology badge color for projects
+export const getTechBadgeColor = (tech: string): { bgColor: string; textColor: string; borderColor: string } => {
+  for (const category of skillsData) {
+    if (category.skills.includes(tech)) {
+      const colorClass = category.color.replace('text-', '')
+      return {
+        bgColor: `bg-${colorClass}/10`,
+        textColor: category.color,
+        borderColor: `border-${colorClass}/20`
+      }
+    }
+  }
+  return {
+    bgColor: 'bg-green-400/10',
+    textColor: 'text-green-300',
+    borderColor: 'border-green-400/20'
+  }
+}
+
+// Function to create skill color mapping for highlighting text
+export const createSkillColorMap = (): Record<string, string> => {
+  const colorMap: Record<string, string> = {}
+
+  skillsData.forEach(category => {
+    const colorClass = category.color.replace('text-', '')
+    category.skills.forEach(skill => {
+      colorMap[skill.toLowerCase()] = colorClass
+    })
+  })
+
+  return colorMap
+}
+
+// Scroll to element helper
+export const scrollToElement = (selector: string) => {
+  const element = document.querySelector(selector)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
 } 

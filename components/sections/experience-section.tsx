@@ -5,12 +5,101 @@ import { Calendar, MapPin, ExternalLink } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedSection } from "@/components/animated-section"
 import { GlitchText } from "@/components/glitch-text"
-import { HighlightKeywords } from "@/components/highlight-keywords"
-import { experienceData } from "@/data/portfolio-data"
-import { createSkillColorMap, getTechBadgeColor } from "@/utils/portfolio-utils"
+import { experienceData, createSkillColorMap } from "@/data/portfolio-data"
+
+// Component to highlight skills in text
+const HighlightSkills = ({ text }: { text: string }) => {
+  const skillColorMap = createSkillColorMap()
+
+  // Create skill aliases for better matching
+  const skillAliases: Record<string, string> = {
+    'reactts': 'react (js/ts)',
+    'react': 'react (js/ts)',
+    'typescript': 'typescript',
+    'javascript': 'javascript',
+    'vue.js': 'vue.js (v. 2/3)',
+    'vue': 'vue.js (v. 2/3)',
+    'angularjs': 'angular',
+    'angular': 'angular',
+    'nestjs': 'nestjs',
+    'express.js': 'express.js',
+    'express': 'express.js',
+    'php': 'php',
+    'laravel': 'laravel',
+    'go': 'go',
+    'html': 'html5',
+    'html5': 'html5',
+    'css': 'css3',
+    'css3': 'css3',
+    '.net core': '.net core',
+    '.net framework': '.net framework',
+    'asp.net': 'c# asp.net',
+    'c#': 'c# asp.net',
+    'git': 'git',
+    'auth0': 'auth0',
+    'prisma': 'prisma',
+    'next.js': 'next.js',
+    'tailwindcss': 'tailwindcss',
+    'sql server': 'sql server',
+    'linq': 'linq'
+  }
+
+  // Separate patterns for .NET technologies (no word boundaries) and other skills
+  const dotNetPatterns = ['.net core', '.net framework']
+  const otherPatterns = [
+    ...Object.keys(skillColorMap).filter(skill => !dotNetPatterns.includes(skill)),
+    ...Object.keys(skillAliases).filter(alias => !dotNetPatterns.includes(alias))
+  ]
+
+  // Sort by length (longest first) to match longer terms first
+  const sortedOtherPatterns = otherPatterns.sort((a, b) => b.length - a.length)
+
+  // Create regex patterns
+  const escapedDotNetPatterns = dotNetPatterns.map(s =>
+    s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  )
+  const escapedOtherPatterns = sortedOtherPatterns.map(s =>
+    s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  )
+
+  // Combine patterns: .NET patterns without word boundaries, others with word boundaries
+  const dotNetRegex = new RegExp(`(${escapedDotNetPatterns.join('|')})`, 'gi')
+  const otherRegex = new RegExp(`\\b(${escapedOtherPatterns.join('|')})\\b`, 'gi')
+
+  // First split by .NET patterns, then by other patterns
+  let parts = text.split(dotNetRegex)
+
+  // Process each part for other patterns
+  parts = parts.map(part => {
+    if (!part) return part
+    const subParts = part.split(otherRegex)
+    return subParts
+  }).flat()
+
+  return (
+    <>
+      {parts.map((part, index) => {
+        if (!part) return null
+
+        const lowerPart = part.toLowerCase()
+        const aliasedSkill = skillAliases[lowerPart] || lowerPart
+        const color = skillColorMap[aliasedSkill]
+
+        if (color) {
+          return (
+            <span key={index} className={`text-${color} font-semibold`}>
+              {part}
+            </span>
+          )
+        }
+
+        return <span key={index}>{part}</span>
+      })}
+    </>
+  )
+}
 
 export const ExperienceSection = () => {
-  const skillColorMap = createSkillColorMap()
 
   return (
     <AnimatedSection
@@ -52,9 +141,8 @@ export const ExperienceSection = () => {
               {experienceData.map((job, index) => (
                 <div
                   key={index}
-                  className={`relative flex items-center w-full mb-8 ${
-                    job.side === "left" ? "md:justify-start" : "md:justify-end"
-                  }`}
+                  className={`relative flex items-center w-full mb-8 ${job.side === "left" ? "md:justify-start" : "md:justify-end"
+                    }`}
                 >
                   <motion.div
                     className="absolute left-[-8px] md:left-[49.4%] transform -translate-x-1/2 z-10"
@@ -65,15 +153,13 @@ export const ExperienceSection = () => {
                   >
                     <div className="relative flex items-center justify-center">
                       <div
-                        className={`w-4 h-4 ${
-                          job.current ? "bg-green-400 animate-pulse" : "bg-green-500"
-                        } rounded-full shadow-lg`}
+                        className={`w-4 h-4 ${job.current ? "bg-green-400 animate-pulse" : "bg-green-500"
+                          } rounded-full shadow-lg`}
                       ></div>
 
                       <div
-                        className={`hidden md:block absolute whitespace-nowrap text-xs font-semibold text-green-300 ${
-                          job.side === "left" ? "left-6" : "right-6"
-                        }`}
+                        className={`hidden md:block absolute whitespace-nowrap text-xs font-semibold text-green-300 ${job.side === "left" ? "left-6" : "right-6"
+                          }`}
                       >
                         <GlitchText>{`${job.period} (${job.duration})`}</GlitchText>
                       </div>
@@ -81,9 +167,8 @@ export const ExperienceSection = () => {
                   </motion.div>
 
                   <motion.div
-                    className={`bg-black/60 backdrop-blur-sm border border-green-400/20 p-4 rounded-lg ml-8 md:ml-0 ${
-                      job.side === "left" ? "md:mr-auto md:ml-8" : "md:ml-auto md:mr-8"
-                    } w-full md:w-5/12 shadow-lg hover:border-green-400/40 transition-all duration-300 relative overflow-hidden group`}
+                    className={`bg-black/60 backdrop-blur-sm border border-green-400/20 p-4 rounded-lg ml-8 md:ml-0 ${job.side === "left" ? "md:mr-auto md:ml-8" : "md:ml-auto md:mr-8"
+                      } w-full md:w-5/12 shadow-lg hover:border-green-400/40 transition-all duration-300 relative overflow-hidden group`}
                     initial={{ opacity: 0, x: job.side === "left" ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -123,23 +208,8 @@ export const ExperienceSection = () => {
                       </div>
 
                       <p className="text-sm mb-3 text-green-300 leading-relaxed font-mono">
-                        <HighlightKeywords text={job.description} keywordMap={skillColorMap} />
+                        <HighlightSkills text={job.description} />
                       </p>
-
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        {job.technologies.map((tech) => {
-                          const { bgColor, textColor, borderColor } = getTechBadgeColor(tech)
-                          return (
-                            <Badge
-                              key={tech}
-                              variant="secondary"
-                              className={`${bgColor} ${textColor} border ${borderColor} font-mono hover:bg-green-400/20 transition-colors text-xs`}
-                            >
-                              <GlitchText>{tech}</GlitchText>
-                            </Badge>
-                          )
-                        })}
-                      </div>
                     </div>
                   </motion.div>
                 </div>

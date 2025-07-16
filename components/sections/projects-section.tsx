@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { AnimatedSection } from "@/components/animated-section"
 import { GlitchText } from "@/components/glitch-text"
 import { projectsData, fadeInUp, staggerContainer } from "@/data/portfolio-data"
-import { getTechBadgeColor } from "@/utils/portfolio-utils"
+import { getTechBadgeColor } from "@/data/portfolio-data"
 
 export const ProjectsSection = () => {
   return (
