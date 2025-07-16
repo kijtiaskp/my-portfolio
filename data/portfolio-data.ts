@@ -13,12 +13,12 @@ export const skillsData: SkillCategory[] = [
   {
     title: "Programming",
     color: "text-pink-400",
-    skills: ["C# ASP.NET", "CSS3", "Go", "HTML5", "JavaScript", "PHP", "TypeScript"],
+    skills: ["C# ASP.NET", "Go", "JavaScript", "PHP", "TypeScript"],
   },
   {
     title: "Frontend",
     color: "text-cyan-400",
-    skills: ["Angular", "Next.js", "React (JS/TS)", "TailwindCSS", "Vue.js (v. 2/3)"],
+    skills: ["Angular", "CSS3", "HTML5", "Next.js", "React (JS/TS)", "TailwindCSS", "Vue.js (v. 2/3)"],
   },
   {
     title: "Backend",
@@ -38,7 +38,7 @@ export const skillsData: SkillCategory[] = [
   {
     title: "Others",
     color: "text-teal-300",
-    skills: ["AI prompt", "Auth0", "Cursor", "OBS", "POSTMAN", "UX/UI", "Visual Studio Code", "Windsurf"],
+    skills: ["Auth0", "POSTMAN"],
   },
 ]
 
