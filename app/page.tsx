@@ -24,7 +24,7 @@ import {
   Phone,
 } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+
 import { useState, useEffect, useRef, useMemo } from "react"
 import { motion, useInView } from "framer-motion"
 import { GlitchText } from "@/components/glitch-text"
@@ -558,15 +558,23 @@ export default function Portfolio() {
                 { href: "#contact", text: "curl -X POST /contact", prefix: "$" },
               ].map((item, index) => (
                 <motion.div key={index} variants={fadeInUp}>
-                  <Link
-                    href={item.href}
-                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-green-400/20 transition-all duration-300 border border-transparent hover:border-green-400/40 group"
+                  <button
+                    onClick={() => {
+                      const element = document.querySelector(item.href)
+                      if (element) {
+                        element.scrollIntoView({ 
+                          behavior: 'smooth',
+                          block: 'start'
+                        })
+                      }
+                    }}
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-green-400/20 transition-all duration-300 border border-transparent hover:border-green-400/40 group cursor-pointer"
                   >
                     <span className="text-green-400 text-sm font-mono">{item.prefix}</span>
                     <span className="text-green-300 text-sm font-mono group-hover:text-green-200 transition-colors">
                       <GlitchText>{item.text}</GlitchText>
                     </span>
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
             </motion.div>
@@ -626,17 +634,25 @@ export default function Portfolio() {
                 { href: "#experience", text: "cat experience.log", prefix: "$" },
                 { href: "#contact", text: "curl -X POST /contact", prefix: "$" },
               ].map((item, index) => (
-                <Link
+                <button
                   key={index}
-                  href={item.href}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-400/20 transition-all duration-300 border border-transparent hover:border-green-400/40"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    const element = document.querySelector(item.href)
+                    if (element) {
+                      element.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                      })
+                    }
+                    setMobileMenuOpen(false)
+                  }}
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-green-400/20 transition-all duration-300 border border-transparent hover:border-green-400/40 cursor-pointer"
                 >
                   <span className="text-green-400 font-mono text-sm">{item.prefix}</span>
                   <span className="text-green-300 font-mono text-sm">
                     <GlitchText>{item.text}</GlitchText>
                   </span>
-                </Link>
+                </button>
               ))}
 
               <div className="pt-3 mt-3 border-t border-green-400/20">
