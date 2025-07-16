@@ -889,7 +889,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              {/* Profile Visual */}
+              {/* Profile Visual - Binary Computer Screen */}
               <motion.div
                 className="relative mb-8 flex justify-center lg:justify-end"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -898,25 +898,81 @@ export default function Portfolio() {
               >
                 <div className="relative">
                   <motion.div
-                    className="w-48 h-48 rounded-2xl bg-gradient-to-br from-green-400/20 to-slate-800/50 border-2 border-green-400/40 flex items-center justify-center shadow-2xl relative overflow-hidden"
+                    className="w-48 h-48 rounded-2xl bg-black border-2 border-green-400/40 flex items-center justify-center shadow-2xl relative overflow-hidden"
                     whileHover={{ scale: 1.05, rotateY: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {/* Animated background */}
+                    {/* Binary Rain Background */}
+                    <div className="absolute inset-0 flex flex-col justify-between p-2">
+                      {Array.from({ length: 20 }, (_, rowIndex) => (
+                        <motion.div
+                          key={rowIndex}
+                          className="flex justify-between text-xs font-mono text-green-400/60"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: rowIndex * 0.1 }}
+                        >
+                          {Array.from({ length: 16 }, (_, colIndex) => {
+                            // Use deterministic values based on row and column indices
+                            const binaryValue = ((rowIndex * 16 + colIndex) % 2) === 0 ? "1" : "0"
+                            const animationDelay = (rowIndex + colIndex) * 0.1
+                            const animationDuration = 1 + (rowIndex % 3) * 0.5
+
+                            return (
+                              <motion.span
+                                key={colIndex}
+                                className="inline-block w-2"
+                                animate={{
+                                  opacity: [0.3, 1, 0.3],
+                                  color: ["#00ff88", "#00ffaa", "#00ff88"]
+                                }}
+                                transition={{
+                                  duration: animationDuration,
+                                  repeat: Infinity,
+                                  delay: animationDelay
+                                }}
+                              >
+                                {binaryValue}
+                              </motion.span>
+                            )
+                          })}
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Central Profile Display */}
+                    <div className="relative z-10 text-center">
+                      <motion.div
+                        className="w-20 h-20 rounded-full bg-green-400/20 border-2 border-green-400/40 flex items-center justify-center mb-2"
+                        animate={{
+                          boxShadow: [
+                            "0 0 10px rgba(0,255,136,0.3)",
+                            "0 0 20px rgba(0,255,136,0.5)",
+                            "0 0 10px rgba(0,255,136,0.3)"
+                          ]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <span className="text-3xl font-bold text-green-400">
+                          <GlitchText>K</GlitchText>
+                        </span>
+                      </motion.div>
+
+                      <motion.div
+                        className="text-xs font-mono text-green-400/80"
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <GlitchText>SYSTEM ONLINE</GlitchText>
+                      </motion.div>
+                    </div>
+
+                    {/* Scanning Line Effect */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10"
-                      animate={{
-                        background: [
-                          "linear-gradient(45deg, rgba(0,255,136,0.1), rgba(0,255,255,0.1))",
-                          "linear-gradient(135deg, rgba(0,255,255,0.1), rgba(0,255,136,0.1))",
-                          "linear-gradient(45deg, rgba(0,255,136,0.1), rgba(0,255,255,0.1))"
-                        ]
-                      }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 bg-gradient-to-b from-green-400/20 to-transparent h-1"
+                      animate={{ y: [0, 192, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     />
-                    <span className="text-8xl font-bold text-green-400 relative z-10">
-                      <GlitchText>K</GlitchText>
-                    </span>
                   </motion.div>
 
                   {/* Floating indicators */}
@@ -1295,12 +1351,12 @@ export default function Portfolio() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10 font-mono text-sm">
-                                          <div className={`flex items-center gap-2 mb-2 ${category.color}`}>
-                        <Folder className="w-4 h-4 text-green-400" />
-                        <span className="font-semibold">
-                          <GlitchText>{`${category.title.toLowerCase()}/`}</GlitchText>
-                        </span>
-                      </div>
+                    <div className={`flex items-center gap-2 mb-2 ${category.color}`}>
+                      <Folder className="w-4 h-4 text-green-400" />
+                      <span className="font-semibold">
+                        <GlitchText>{`${category.title.toLowerCase()}/`}</GlitchText>
+                      </span>
+                    </div>
 
                     <div className="ml-4 space-y-1">
                       {category.skills.map((skill: string, skillIndex: number) => (
