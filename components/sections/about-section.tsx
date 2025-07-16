@@ -1,9 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
+import { Terminal } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
 import { GlitchText } from "@/components/glitch-text"
+import { SpecsGlitch } from "@/components/specs-glitch"
+import { Progress } from "@/components/ui/progress"
 import { fadeInUp, staggerContainer } from "@/data/portfolio-data"
 
 export const AboutSection = () => {
@@ -200,23 +202,30 @@ export const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="relative"
-              whileHover={{ scale: 1.05 }}
+              className="relative p-6 w-full"
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="w-64 h-64 rounded-full border-4 border-green-400/40 overflow-hidden shadow-lg relative">
-                <Image
-                  src="/placeholder.svg?height=256&width=256"
-                  alt="Kijtisak Pangmee Profile"
-                  width={256}
-                  height={256}
-                  className="w-full h-full object-cover filter brightness-50 contrast-150"
-                />
-                <div className="absolute inset-0 bg-green-400/10"></div>
+
+              {/* Header */}
+              <div className="relative z-10 mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Terminal className="w-5 h-5 text-green-400/30" />
+                  <span className="text-green-400/30 font-mono text-sm">
+                    <GlitchText>sudo system_profiler SPHardwareDataType --verbose</GlitchText>
+                  </span>
+                </div>
+                <div className="h-px bg-green-400/10 mb-4"></div>
+                <div className="text-xs text-red-400/30 mb-2">
+                  <GlitchText>WARNING: Accessing system hardware data...</GlitchText>
+                </div>
               </div>
-              <div className="absolute -bottom-2 -right-2 bg-green-400 text-black px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
-                <GlitchText>ONLINE</GlitchText>
+
+              {/* Glitching Specs */}
+              <div className="relative z-10 space-y-4 font-mono text-sm">
+                <SpecsGlitch />
               </div>
+
+
             </motion.div>
           </motion.div>
         </div>

@@ -9,9 +9,10 @@ interface GlitchTextProps {
   className?: string
   delay?: number
   persistent?: boolean
+  inverse?: boolean
 }
 
-export function GlitchText({ children, className = "", delay = 0, persistent = false }: GlitchTextProps) {
+export function GlitchText({ children, className = "", delay = 0, persistent = false, inverse = false }: GlitchTextProps) {
   const ref = useRef(null)
   // By setting `once` to `false`, the `isInView` status will update every time
   // the component enters or leaves the viewport, re-triggering the animation.
@@ -21,8 +22,8 @@ export function GlitchText({ children, className = "", delay = 0, persistent = f
   return (
     <span
       ref={ref}
-      className={`${className} ${isGlitching ? "animate-pulse glitch-error" : ""}`}
-      style={{ 
+      className={`${className} ${isGlitching ? (inverse ? "animate-pulse glitch-inverse" : "animate-pulse glitch-error") : ""}`}
+      style={{
         animationDelay: `${delay}ms`
       }}
     >

@@ -63,6 +63,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-black text-foreground font-mono;
     background-color: #000000;
@@ -74,6 +75,7 @@
   0% {
     transform: translateY(-100vh);
   }
+
   100% {
     transform: translateY(100vh);
   }
@@ -111,6 +113,7 @@
 }
 
 @keyframes glitch-1 {
+
   0%,
   14%,
   15%,
@@ -120,6 +123,7 @@
   100% {
     transform: translate(0);
   }
+
   15%,
   49% {
     transform: translate(-2px, 0);
@@ -127,6 +131,7 @@
 }
 
 @keyframes glitch-2 {
+
   0%,
   20%,
   21%,
@@ -136,6 +141,7 @@
   100% {
     transform: translate(0);
   }
+
   21%,
   62% {
     transform: translate(2px, 0);
@@ -197,7 +203,7 @@
 
 /* Matrix Grid Background */
 .matrix-grid {
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -230,10 +236,14 @@
 
 /* Terminal Cursor Blink Animation */
 @keyframes blink {
-  0%, 50% {
+
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+
+  51%,
+  100% {
     opacity: 0;
   }
 }
@@ -267,51 +277,117 @@
 
 @keyframes glitch-error-animation {
   0% {
-    text-shadow: 
+    text-shadow:
       -1px 0 0 #ff0000,
       1px 0 0 #00ff00,
       0 -1px 0 #ff0000,
       0 1px 0 #00ff00;
     color: inherit;
   }
+
   20% {
-    text-shadow: 
+    text-shadow:
       -2px 0 0 #ff4444,
       2px 0 0 #44ff44,
       0 -2px 0 #ff0000,
       0 2px 0 #00ff00;
     color: #ff0044;
   }
+
   40% {
-    text-shadow: 
+    text-shadow:
       2px 0 0 #ff0000,
       -2px 0 0 #00ff00,
       1px -1px 0 #ff4444,
       -1px 1px 0 #44ff44;
     color: #ff6666;
   }
+
   60% {
-    text-shadow: 
+    text-shadow:
       0 0 0 #ff0000,
       3px 0 0 #00ff00,
       -1px -2px 0 #ff0044,
       1px 2px 0 #44ff44;
     color: inherit;
   }
+
   80% {
-    text-shadow: 
+    text-shadow:
       -3px 0 0 #ff0000,
       1px 0 0 #00ff00,
       2px -1px 0 #ff4444,
       -2px 1px 0 #44ff44;
     color: #ff3333;
   }
+
   100% {
-    text-shadow: 
+    text-shadow:
       -1px 0 0 #ff0000,
       1px 0 0 #00ff00,
       0 -1px 0 #ff0000,
       0 1px 0 #00ff00;
+    color: inherit;
+  }
+}
+
+/* Glitch Inverse Animation (opposite colors) */
+.glitch-inverse {
+  animation: glitch-inverse-animation 0.3s infinite;
+}
+
+@keyframes glitch-inverse-animation {
+  0% {
+    text-shadow:
+      -1px 0 0 #00ffff,
+      1px 0 0 #ff00ff,
+      0 -1px 0 #00ffff,
+      0 1px 0 #ff00ff;
+    color: inherit;
+  }
+
+  20% {
+    text-shadow:
+      -2px 0 0 #44ffff,
+      2px 0 0 #ff44ff,
+      0 -2px 0 #00ffff,
+      0 2px 0 #ff00ff;
+    color: #0044ff;
+  }
+
+  40% {
+    text-shadow:
+      2px 0 0 #00ffff,
+      -2px 0 0 #ff00ff,
+      1px -1px 0 #44ffff,
+      -1px 1px 0 #ff44ff;
+    color: #6666ff;
+  }
+
+  60% {
+    text-shadow:
+      0 0 0 #00ffff,
+      3px 0 0 #ff00ff,
+      -1px -2px 0 #0044ff,
+      1px 2px 0 #ff44ff;
+    color: inherit;
+  }
+
+  80% {
+    text-shadow:
+      -3px 0 0 #00ffff,
+      1px 0 0 #ff00ff,
+      2px -1px 0 #44ffff,
+      -2px 1px 0 #ff44ff;
+    color: #3333ff;
+  }
+
+  100% {
+    text-shadow:
+      -1px 0 0 #00ffff,
+      1px 0 0 #ff00ff,
+      0 -1px 0 #00ffff,
+      0 1px 0 #ff00ff;
     color: inherit;
   }
 }
