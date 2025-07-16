@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Download, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
   MessageCircle,
-  ChevronDown 
+  ChevronDown
 } from "lucide-react"
 import { useGlitchText } from "@/hooks/use-glitch-text"
 import { GlitchText } from "@/components/glitch-text"
