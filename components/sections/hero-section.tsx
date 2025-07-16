@@ -126,7 +126,7 @@ export const HeroSection = () => {
     const responses = terminalCommands[responseKey]
     if (responses) {
       setTimeout(() => {
-        setTerminalHistory((prev) => [...prev, ...responses])
+        setTerminalHistory((prev) => [...prev, ...responses as TerminalHistoryItem[]])
       }, 300)
 
       // Auto-scroll to sections
