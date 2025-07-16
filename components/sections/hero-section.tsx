@@ -370,7 +370,6 @@ export const HeroSection = () => {
               <div className="relative">
                 <motion.div
                   className="w-48 h-48 rounded-2xl bg-black border-2 border-green-400/40 flex items-center justify-center shadow-2xl relative overflow-hidden"
-                  whileHover={{ scale: 1.05, rotateY: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   {/* Binary Rain Background */}
