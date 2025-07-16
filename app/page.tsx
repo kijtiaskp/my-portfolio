@@ -46,7 +46,13 @@ const staggerContainer = {
 }
 
 // Data moved outside component for stability
-const skillsData = [
+interface SkillCategory {
+  title: string
+  color: string
+  skills: string[]
+}
+
+const skillsData: SkillCategory[] = [
   {
     title: "Programming",
     color: "text-pink-400",
@@ -562,7 +568,7 @@ export default function Portfolio() {
                     onClick={() => {
                       const element = document.querySelector(item.href)
                       if (element) {
-                        element.scrollIntoView({ 
+                        element.scrollIntoView({
                           behavior: 'smooth',
                           block: 'start'
                         })
@@ -639,7 +645,7 @@ export default function Portfolio() {
                   onClick={() => {
                     const element = document.querySelector(item.href)
                     if (element) {
-                      element.scrollIntoView({ 
+                      element.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                       })
@@ -1287,20 +1293,29 @@ export default function Portfolio() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <h4 className={`text-sm font-medium mb-2 ${category.color}`}>
-                      <GlitchText>{category.title}</GlitchText>
-                    </h4>
-                    <ul className="space-y-1 text-sm">
-                      {category.skills.map((skill) => (
-                        <li key={skill} className="flex items-center gap-1">
-                          <span className={category.color}>•</span>
-                          <span className="text-green-300 hover:underline cursor-pointer transition-colors hover:text-green-200">
+                  <div className="relative z-10 font-mono text-sm">
+                    <div className={`flex items-center gap-2 mb-2 ${category.color}`}>
+                      <span className="text-green-400">📁</span>
+                      <span className="font-semibold">
+                        <GlitchText>{`${category.title.toLowerCase()}/`}</GlitchText>
+                      </span>
+                    </div>
+
+                    <div className="ml-4 space-y-1">
+                      {category.skills.map((skill: string, skillIndex: number) => (
+                        <div key={skill} className="flex items-center gap-2 group">
+                          <span className="text-green-400">
+                            {skillIndex === category.skills.length - 1 ? "└──" : "├──"}
+                          </span>
+                          <span className="text-green-300 group-hover:text-green-200 transition-colors cursor-pointer text-xs">
                             <GlitchText>{skill}</GlitchText>
                           </span>
-                        </li>
+                          <span className="text-green-400/50 text-xs">
+                            <GlitchText>.exe</GlitchText>
+                          </span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </motion.div>
               ))}
