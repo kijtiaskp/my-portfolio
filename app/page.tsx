@@ -22,6 +22,7 @@ import {
   Eye,
   Zap,
   Phone,
+  Folder,
 } from "lucide-react"
 import Image from "next/image"
 
@@ -1294,25 +1295,27 @@ export default function Portfolio() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10 font-mono text-sm">
-                    <div className={`flex items-center gap-2 mb-2 ${category.color}`}>
-                      <span className="text-green-400">📁</span>
-                      <span className="font-semibold">
-                        <GlitchText>{`${category.title.toLowerCase()}/`}</GlitchText>
-                      </span>
-                    </div>
+                                          <div className={`flex items-center gap-2 mb-2 ${category.color}`}>
+                        <Folder className="w-4 h-4 text-green-400" />
+                        <span className="font-semibold">
+                          <GlitchText>{`${category.title.toLowerCase()}/`}</GlitchText>
+                        </span>
+                      </div>
 
                     <div className="ml-4 space-y-1">
                       {category.skills.map((skill: string, skillIndex: number) => (
-                        <div key={skill} className="flex items-center gap-2 group">
-                          <span className="text-green-400">
+                        <div key={skill} className="flex items-start gap-2 group">
+                          <span className="text-green-400 flex-shrink-0 mt-0.5">
                             {skillIndex === category.skills.length - 1 ? "└──" : "├──"}
                           </span>
-                          <span className="text-green-300 group-hover:text-green-200 transition-colors cursor-pointer text-xs">
-                            <GlitchText>{skill}</GlitchText>
-                          </span>
-                          <span className="text-green-400/50 text-xs">
-                            <GlitchText>.exe</GlitchText>
-                          </span>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-green-300 group-hover:text-green-200 transition-colors cursor-pointer text-xs break-words">
+                              <GlitchText>{skill}</GlitchText>
+                              <span className="text-green-400/50">
+                                <GlitchText>.exe</GlitchText>
+                              </span>
+                            </span>
+                          </div>
                         </div>
                       ))}
                     </div>
