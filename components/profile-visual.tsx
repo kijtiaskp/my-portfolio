@@ -21,7 +21,7 @@ export const ProfileVisual = ({ className = "" }: ProfileVisualProps) => {
           className="w-48 h-48 rounded-2xl bg-black border-2 border-green-400/40 flex items-center justify-center shadow-2xl relative overflow-hidden"
           transition={{ type: "spring", stiffness: 300 }}
         >
-          {/* Binary Rain Background */}
+          {/* Sparkling Binary Background */}
           <div className="absolute inset-0 flex flex-col justify-between p-2">
             {Array.from({ length: 20 }, (_, rowIndex) => (
               <motion.div
@@ -34,21 +34,19 @@ export const ProfileVisual = ({ className = "" }: ProfileVisualProps) => {
                 {Array.from({ length: 16 }, (_, colIndex) => {
                   // Use deterministic values based on row and column indices
                   const binaryValue = ((rowIndex * 16 + colIndex) % 2) === 0 ? "1" : "0"
-                  const animationDelay = (rowIndex + colIndex) * 0.1
-                  const animationDuration = 1 + (rowIndex % 3) * 0.5
+                  const sparkleDuration = Math.random() * 1.5 + 0.5
 
                   return (
                     <motion.span
                       key={colIndex}
-                      className="inline-block w-2"
+                      className="inline-block w-2 relative"
                       animate={{
-                        opacity: [0.3, 1, 0.3],
-                        color: ["#00ff88", "#00ffaa", "#00ff88"]
+                        opacity: [0.6, 1, 0.6]
                       }}
                       transition={{
-                        duration: animationDuration,
+                        duration: sparkleDuration,
                         repeat: Infinity,
-                        delay: animationDelay
+                        ease: "easeInOut"
                       }}
                     >
                       {binaryValue}
