@@ -1,62 +1,101 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { GlitchText } from "@/components/glitch-text"
+import React from "react"
+import { createSkillColorMap } from "@/data/portfolio-data"
 
 interface HighlightKeywordsProps {
   text: string
-  keywordMap: Record<string, string>
+  className?: string
 }
 
-// Helper component to highlight keywords
-export const HighlightKeywords = ({ text, keywordMap }: HighlightKeywordsProps) => {
-  const [keywordsRegex, setKeywordsRegex] = useState<RegExp | null>(null)
+// Component to highlight skills in text
+export const HighlightKeywords = ({ text, className = "" }: HighlightKeywordsProps) => {
+  const skillColorMap = createSkillColorMap()
 
-  useEffect(() => {
-    const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-    const escapedKeywords = Object.keys(keywordMap).map(escapeRegExp)
-    if (escapedKeywords.length === 0) {
-      setKeywordsRegex(null)
-      return
-    }
-    // Create a single regex to find all keywords
-    setKeywordsRegex(new RegExp(`\\b(${escapedKeywords.join("|")})\\b`, "gi"))
-  }, [keywordMap])
-
-  if (!text) return null
-
-  // If there are no keywords, just return the text
-  if (!keywordsRegex) {
-    return <GlitchText>{text}</GlitchText>
+  // Create skill aliases for better matching
+  const skillAliases: Record<string, string> = {
+    'reactts': 'react (js/ts)',
+    'react': 'react (js/ts)',
+    'typescript': 'typescript',
+    'javascript': 'javascript',
+    'vue.js': 'vue.js (v. 2/3)',
+    'vue': 'vue.js (v. 2/3)',
+    'angularjs': 'angular',
+    'angular': 'angular',
+    'nestjs': 'nestjs',
+    'express.js': 'express.js',
+    'express': 'express.js',
+    'php': 'php',
+    'laravel': 'laravel',
+    'go': 'go',
+    'html': 'html5',
+    'html5': 'html5',
+    'css': 'css3',
+    'css3': 'css3',
+    '.net core': '.net core',
+    '.net framework': '.net framework',
+    'asp.net': 'c# asp.net',
+    'c#': 'c# asp.net',
+    'git': 'git',
+    'auth0': 'auth0',
+    'prisma': 'prisma',
+    'next.js': 'next.js',
+    'tailwindcss': 'tailwindcss',
+    'sql server': 'sql server',
+    'linq': 'linq'
   }
 
-  const parts = text.split(keywordsRegex)
+  // Separate patterns for .NET technologies (no word boundaries) and other skills
+  const dotNetPatterns = ['.net core', '.net framework']
+  const otherPatterns = [
+    ...Object.keys(skillColorMap).filter(skill => !dotNetPatterns.includes(skill)),
+    ...Object.keys(skillAliases).filter(alias => !dotNetPatterns.includes(alias))
+  ]
+
+  // Sort by length (longest first) to match longer terms first
+  const sortedOtherPatterns = otherPatterns.sort((a, b) => b.length - a.length)
+
+  // Create regex patterns
+  const escapedDotNetPatterns = dotNetPatterns.map(s =>
+    s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  )
+  const escapedOtherPatterns = sortedOtherPatterns.map(s =>
+    s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  )
+
+  // Combine patterns: .NET patterns without word boundaries, others with word boundaries
+  const dotNetRegex = new RegExp(`(${escapedDotNetPatterns.join('|')})`, 'gi')
+  const otherRegex = new RegExp(`\\b(${escapedOtherPatterns.join('|')})\\b`, 'gi')
+
+  // First split by .NET patterns, then by other patterns
+  let parts = text.split(dotNetRegex)
+
+  // Process each part for other patterns
+  parts = parts.map(part => {
+    if (!part) return part
+    const subParts = part.split(otherRegex)
+    return subParts
+  }).flat()
 
   return (
-    <>
+    <span className={className}>
       {parts.map((part, index) => {
-        // The split can result in `undefined` if a capture group in the regex doesn't match.
-        // This check adds robustness and prevents the app from crashing.
-        if (part === undefined) {
-          return null
-        }
+        if (!part) return null
 
         const lowerPart = part.toLowerCase()
-        // Check if the current part is a keyword (case-insensitive)
-        const colorClass = keywordMap[lowerPart]
+        const aliasedSkill = skillAliases[lowerPart] || lowerPart
+        const color = skillColorMap[aliasedSkill]
 
-        if (colorClass) {
-          // It's a keyword, apply the color
+        if (color) {
           return (
-            <span key={index} className={`${colorClass} font-semibold`}>
-              <GlitchText>{part}</GlitchText>
+            <span key={index} className={`text-${color} font-semibold`}>
+              {part}
             </span>
           )
         }
 
-        // It's a regular part of the string
-        return <GlitchText key={index}>{part}</GlitchText>
+        return <span key={index}>{part}</span>
       })}
-    </>
+    </span>
   )
 }
