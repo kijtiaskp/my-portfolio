@@ -201,7 +201,9 @@ export const terminalCommands: Commands = {
 
 // ===== OTHER DATA =====
 export const subtitleTexts = [
+  "FULL STACK DEVELOPER",
   "SOFTWARE DEVELOPER",
+  "PROGRAMMER",
   "GAMER",
   "SLEEPER",
   "POTTERHEAD",
