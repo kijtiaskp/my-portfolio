@@ -18,6 +18,7 @@ export const SpecsGlitch = ({ className = "" }: SpecsGlitchProps) => {
     gpu: false,
     display: false
   })
+  const [isMainGlitching, setIsMainGlitching] = useState(false)
 
   const systems = [
     // MacBook + Linux/macOS
@@ -67,38 +68,72 @@ export const SpecsGlitch = ({ className = "" }: SpecsGlitchProps) => {
   const triggerCascadingGlitch = (changeText = false) => {
     const sections = ['model', 'processor', 'memory', 'storage', 'usage', 'gpu', 'display']
     const glitchDelay = 100 // Delay between each section glitch
-
+    
+    setIsMainGlitching(true) // Start main glitch period
+    
     sections.forEach((section, index) => {
       setTimeout(() => {
         setGlitchStates(prev => ({ ...prev, [section]: true }))
-
+        
         // Change text during the glitch of each section
         if (changeText) {
           setTimeout(() => {
             setCurrentSpecs((prev) => (prev + 1) % systems.length)
           }, 200) // Change text in the middle of this section's glitch
         }
-
+        
         // Stop glitch for this section after 400ms
         setTimeout(() => {
           setGlitchStates(prev => ({ ...prev, [section]: false }))
         }, 400)
       }, index * glitchDelay)
     })
+    
+    // End main glitch period after all sections complete
+    const totalGlitchTime = (sections.length - 1) * glitchDelay + 400
+    setTimeout(() => {
+      setIsMainGlitching(false)
+    }, totalGlitchTime + 100)
+  }
+
+  const triggerRandomGlitch = () => {
+    // Only trigger random glitch during reading periods (not during main glitch)
+    if (isMainGlitching) return
+    
+    const sections = ['model', 'processor', 'memory', 'storage', 'usage', 'gpu', 'display']
+    const randomSection = sections[Math.floor(Math.random() * sections.length)]
+    
+    setGlitchStates(prev => ({ ...prev, [randomSection]: true }))
+    
+    // Stop random glitch after short duration
+    setTimeout(() => {
+      setGlitchStates(prev => ({ ...prev, [randomSection]: false }))
+    }, 150 + Math.random() * 100) // Shorter random duration 150-250ms
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    // Main cascading glitch interval
+    const mainInterval = setInterval(() => {
       // Phase 1: Quick cascading glitch (no text change)
       triggerCascadingGlitch(false)
-
+      
       setTimeout(() => {
         // Phase 2: Second cascading glitch with text change
         triggerCascadingGlitch(true)
       }, 1000) // Wait 1 second between glitch phases
     }, 8000) // Switch every 8 seconds (longer for reading)
 
-    return () => clearInterval(interval)
+    // Random periodic glitches during reading periods
+    const randomInterval = setInterval(() => {
+      if (Math.random() < 0.6) { // 60% chance of random glitch during reading
+        triggerRandomGlitch()
+      }
+    }, 800) // Check every 0.8 seconds for more frequent glitches
+
+    return () => {
+      clearInterval(mainInterval)
+      clearInterval(randomInterval)
+    }
   }, [systems.length])
 
   const currentSystem = systems[currentSpecs]
@@ -173,9 +208,8 @@ export const SpecsGlitch = ({ className = "" }: SpecsGlitchProps) => {
           </div>
           <div className="relative">
             <div className="h-2 bg-green-900/20 border border-green-300/20 rounded-full overflow-hidden">
-              <div
-                className={`h-full transition-all duration-300 ease-out ${isAnyGlitching ? 'bg-cyan-400/60' : 'bg-green-300/30'
-                  }`}
+              <div 
+                className={`h-full transition-all duration-300 ease-out ${isAnyGlitching ? 'bg-cyan-400/30' : 'bg-green-300/30'}`}
                 style={{ width: `${currentSystem.usagePercent}%` }}
               />
             </div>
@@ -210,4 +244,4 @@ export const SpecsGlitch = ({ className = "" }: SpecsGlitchProps) => {
       </div>
     </div>
   )
-} 
+}
