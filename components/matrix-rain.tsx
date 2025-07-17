@@ -67,4 +67,4 @@ export const MatrixRain = () => {
       style={{ background: "transparent" }}
     />
   )
-} 
+}

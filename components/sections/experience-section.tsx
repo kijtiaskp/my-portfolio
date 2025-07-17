@@ -220,4 +220,4 @@ export const ExperienceSection = () => {
       </div>
     </AnimatedSection>
   )
-} 
+}

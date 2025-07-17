@@ -232,4 +232,4 @@ export const AboutSection = () => {
       </div>
     </AnimatedSection>
   )
-} 
+}

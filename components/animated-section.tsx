@@ -38,4 +38,4 @@ export function AnimatedSection({
       {children}
     </motion.section>
   )
-} 
+}

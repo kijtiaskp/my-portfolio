@@ -71,4 +71,4 @@ export interface Command {
 
 export interface Commands {
   [key: string]: Command[]
-} 
+}

@@ -38,4 +38,4 @@ export const Footer = () => {
       </div>
     </motion.footer>
   )
-} 
+}

@@ -151,4 +151,4 @@ export const ContactSection = () => {
       </div>
     </AnimatedSection>
   )
-} 
+}

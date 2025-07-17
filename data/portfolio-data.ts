@@ -266,4 +266,4 @@ export const scrollToElement = (selector: string) => {
       block: 'start'
     })
   }
-} 
+}
