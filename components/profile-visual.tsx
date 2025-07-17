@@ -110,4 +110,4 @@ export const ProfileVisual = ({ className = "" }: ProfileVisualProps) => {
       </div>
     </motion.div>
   )
-} 
+}

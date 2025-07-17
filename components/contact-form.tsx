@@ -98,4 +98,4 @@ export const ContactForm = ({ className = "", onSubmit }: ContactFormProps) => {
       </Card>
     </motion.div>
   )
-} 
+}

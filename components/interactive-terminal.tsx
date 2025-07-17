@@ -144,4 +144,4 @@ export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps
       </div>
     </div>
   )
-} 
+}

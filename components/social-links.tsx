@@ -42,4 +42,4 @@ export const SocialLinks = ({ className = "" }: SocialLinksProps) => {
       ))}
     </motion.div>
   )
-} 
+}

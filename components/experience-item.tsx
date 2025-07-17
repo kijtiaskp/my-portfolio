@@ -100,4 +100,4 @@ export const ExperienceItem = ({ job, index }: ExperienceItemProps) => {
       </motion.div>
     </div>
   )
-} 
+}

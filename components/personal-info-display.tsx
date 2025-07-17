@@ -189,4 +189,4 @@ export const PersonalInfoDisplay = ({
       </pre>
     </motion.div>
   )
-} 
+}

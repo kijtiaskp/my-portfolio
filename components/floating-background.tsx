@@ -69,4 +69,4 @@ export const FloatingBackground = ({ className = "" }: FloatingBackgroundProps) 
       </motion.div>
     </div>
   )
-} 
+}
