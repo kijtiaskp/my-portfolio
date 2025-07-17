@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AnimatedSection } from "@/components/animated-section"
+import { ContactForm } from "@/components/contact-form"
 import { GlitchText } from "@/components/glitch-text"
 import { contactInfo, fadeInUp, staggerContainer } from "@/data/portfolio-data"
 
@@ -88,65 +89,13 @@ export const ContactSection = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Card className="bg-black/50 border border-green-400/20 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent opacity-50"></div>
-              <CardHeader className="relative z-10">
-                <CardTitle className="text-green-400 flex items-center space-x-2 font-mono">
-                  <MessageCircle className="w-5 h-5" />
-                  <span>
-                    <GlitchText>SEND MESSAGE</GlitchText>
-                  </span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <form className="space-y-4">
-                  <div>
-                    <Label htmlFor="name" className="text-green-300 font-mono">
-                      <GlitchText>NAME</GlitchText>
-                    </Label>
-                    <Input
-                      id="name"
-                      className="bg-black/50 border-green-400/30 text-green-300 focus:border-green-400 focus:ring-green-400 focus:ring-1 font-mono transition-colors"
-                      placeholder="Your name..."
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="text-green-300 font-mono">
-                      <GlitchText>EMAIL</GlitchText>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      className="bg-black/50 border-green-400/30 text-green-300 focus:border-green-400 focus:ring-green-400 focus:ring-1 font-mono transition-colors"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message" className="text-green-300 font-mono">
-                      <GlitchText>MESSAGE</GlitchText>
-                    </Label>
-                    <Textarea
-                      id="message"
-                      className="bg-black/50 border-green-400/30 text-green-300 focus:border-green-400 focus:ring-green-400 focus:ring-1 font-mono transition-colors"
-                      placeholder="Your message..."
-                      rows={4}
-                    />
-                  </div>
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button className="w-full bg-green-400 text-black hover:bg-green-300 font-mono transition-all duration-300">
-                      <GlitchText>SEND MESSAGE</GlitchText>
-                    </Button>
-                  </motion.div>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+          <ContactForm
+            onSubmit={(data) => {
+              // Handle form submission
+              console.log('Contact form submitted:', data)
+              // TODO: Implement actual form submission logic
+            }}
+          />
         </div>
       </div>
     </AnimatedSection>
