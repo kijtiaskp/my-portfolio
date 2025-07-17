@@ -41,7 +41,8 @@ export const ProfileVisual = ({ className = "" }: ProfileVisualProps) => {
                       key={colIndex}
                       className="inline-block w-2 relative"
                       animate={{
-                        opacity: [0.6, 1, 0.6]
+                        opacity: [0.2, 1, 0.6],
+                        color: ["#00ff88", "#00ffaa", "#00ff88"]
                       }}
                       transition={{
                         duration: sparkleDuration,
