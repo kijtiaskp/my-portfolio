@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo, memo } from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
 import {
-  Download,
-  MessageCircle,
   ChevronDown
 } from "lucide-react"
 import { useGlitchText } from "@/hooks/use-glitch-text"
@@ -13,6 +10,7 @@ import { GlitchText } from "@/components/glitch-text"
 import { ProfileVisual } from "@/components/profile-visual"
 import { SocialLinks } from "@/components/social-links"
 import { InteractiveTerminal } from "@/components/interactive-terminal"
+import { ActionButtons } from "@/components/action-buttons"
 import { subtitleTexts } from "@/data/portfolio-data"
 
 const HeroSection = memo(() => {
@@ -190,27 +188,19 @@ const HeroSection = memo(() => {
             </div>
 
             {/* Action Buttons */}
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              <Button
-                size="lg"
-                className="bg-green-400 text-black hover:bg-green-300 font-mono transition-colors duration-300"
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download CV
-              </Button>
-              <Button
-                variant="outline"
-                className="border-green-400/50 text-green-400 hover:bg-green-400/10 bg-transparent font-mono transition-all duration-300 hover:border-green-400 hover:text-green-400 px-6 py-3"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                <GlitchText>Get In Touch</GlitchText>
-              </Button>
-            </motion.div>
+            <ActionButtons 
+              onDownloadCV={() => {
+                // TODO: Implement CV download functionality
+                console.log('Download CV clicked')
+              }}
+              onGetInTouch={() => {
+                // TODO: Implement scroll to contact section
+                const contactSection = document.getElementById('contact')
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+            />
 
             {/* Social Links */}
             <motion.div

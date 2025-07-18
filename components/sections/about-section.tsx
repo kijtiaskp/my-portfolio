@@ -5,6 +5,7 @@ import { Terminal } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
 import { GlitchText } from "@/components/glitch-text"
 import { SpecsGlitch } from "@/components/specs-glitch"
+import { PersonalInfoDisplay } from "@/components/personal-info-display"
 import { fadeInUp, staggerContainer } from "@/data/portfolio-data"
 
 export const AboutSection = () => {
@@ -41,154 +42,14 @@ export const AboutSection = () => {
               <GlitchText persistent>SYSTEM INFORMATION</GlitchText>
             </motion.h2>
 
-            <motion.div
-              className="bg-black border-2 border-green-400/20 rounded-lg p-6 relative overflow-hidden"
-              variants={fadeInUp}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400/5 to-transparent opacity-50"></div>
-              <pre className="text-sm text-green-300 whitespace-pre-wrap font-mono relative z-10">
-                <span className="text-green-400">
-                  <GlitchText>{"{"}</GlitchText>
-                </span>
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>name</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>Kijtisak Pangmee</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>role</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>Software Developer</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>address</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>Bangkapi, Bangkok, 10240</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>phone</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>(+66) 80 733 0752</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>email</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>kijtisak.pa@gmail.com</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>education</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-green-400">
-                  <GlitchText>{"{"}</GlitchText>
-                </span>
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>degree</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>Bachelor Degree in Information Technology</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>university</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>Kasetsart University Sriracha Campus</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>period</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>June 2012 – June 2020</GlitchText>&quot;
-                </span>
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-green-400">
-                  <GlitchText>{"}"}</GlitchText>
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>languages</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-green-400">
-                  <GlitchText>{"{"}</GlitchText>
-                </span>
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>thai</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>native</GlitchText>&quot;
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-cyan-300">
-                  &quot;<GlitchText>english</GlitchText>&quot;
-                </span>
-                :{" "}
-                <span className="text-amber-300">
-                  &quot;<GlitchText>good to read for work, still practicing to speak</GlitchText>&quot;
-                </span>
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-green-400">
-                  <GlitchText>{"}"}</GlitchText>
-                </span>
-                <br />
-                <span className="text-green-400">
-                  <GlitchText>{"}"}</GlitchText>
-                </span>
-              </pre>
+            <motion.div variants={fadeInUp}>
+              <PersonalInfoDisplay />
             </motion.div>
 
-            <motion.p className="text-green-300 leading-relaxed font-mono" variants={fadeInUp}>
+            <motion.p className="text-sm leading-relaxed text-green-300 font-mono" variants={fadeInUp}>
               <GlitchText>
-                I am Kijtisak Pangmee, a dedicated Software Developer based in Bangkok, Thailand. I specialize in
-                building robust and scalable applications, transforming complex challenges into elegant and efficient
-                solutions. My passion lies in continuous learning and delivering high-quality software.
+                Passionate software developer with a strong foundation in modern web technologies and a love for creating
+                efficient, scalable solutions. Always eager to learn new technologies and tackle challenging problems.
               </GlitchText>
             </motion.p>
           </motion.div>

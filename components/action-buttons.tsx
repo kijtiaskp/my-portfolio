@@ -46,7 +46,7 @@ export const ActionButtons = ({
           onClick={onGetInTouch}
         >
           <MessageCircle className="w-4 h-4 mr-2" />
-          <GlitchText>Get In Touch</GlitchText>
+          <GlitchText>Contact Me</GlitchText>
         </Button>
       </motion.div>
     </motion.div>
