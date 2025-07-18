@@ -1,15 +1,36 @@
 "use client"
 
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
 import { MatrixRain } from "@/components/matrix-rain"
 import { ScanLines } from "@/components/scan-lines"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/sections/hero-section"
-import { AboutSection } from "@/components/sections/about-section"
-import { SkillsSection } from "@/components/sections/skills-section"
-import { ProjectsSection } from "@/components/sections/projects-section"
-import { ExperienceSection } from "@/components/sections/experience-section"
-import { ContactSection } from "@/components/sections/contact-section"
-import { Footer } from "@/components/footer"
+
+// Lazy load non-critical sections for better initial page load performance
+const AboutSection = dynamic(() => import("@/components/sections/about-section").then(mod => ({ default: mod.AboutSection })), {
+  loading: () => <div className="min-h-screen flex items-center justify-center text-green-400">Loading...</div>
+})
+
+const SkillsSection = dynamic(() => import("@/components/sections/skills-section").then(mod => ({ default: mod.SkillsSection })), {
+  loading: () => <div className="min-h-screen flex items-center justify-center text-green-400">Loading...</div>
+})
+
+const ProjectsSection = dynamic(() => import("@/components/sections/projects-section").then(mod => ({ default: mod.ProjectsSection })), {
+  loading: () => <div className="min-h-screen flex items-center justify-center text-green-400">Loading...</div>
+})
+
+const ExperienceSection = dynamic(() => import("@/components/sections/experience-section").then(mod => ({ default: mod.ExperienceSection })), {
+  loading: () => <div className="min-h-screen flex items-center justify-center text-green-400">Loading...</div>
+})
+
+const ContactSection = dynamic(() => import("@/components/sections/contact-section").then(mod => ({ default: mod.ContactSection })), {
+  loading: () => <div className="min-h-screen flex items-center justify-center text-green-400">Loading...</div>
+})
+
+const Footer = dynamic(() => import("@/components/footer").then(mod => ({ default: mod.Footer })), {
+  loading: () => <div className="h-32 flex items-center justify-center text-green-400">Loading...</div>
+})
 
 export default function Portfolio() {
   return (
@@ -31,29 +52,21 @@ export default function Portfolio() {
         ></div>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation - Keep this loaded immediately */}
       <Navigation />
 
-      {/* Hero Section */}
+      {/* Hero Section - Critical content, load immediately */}
       <HeroSection />
 
-      {/* About Section */}
-      <AboutSection />
-
-      {/* Skills Section */}
-      <SkillsSection />
-
-      {/* Projects Section */}
-      <ProjectsSection />
-
-      {/* Experience Section */}
-      <ExperienceSection />
-
-      {/* Contact Section */}
-      <ContactSection />
-
-      {/* Footer */}
-      <Footer />
+      {/* Lazy loaded sections wrapped in Suspense for better UX */}
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-green-400">Loading sections...</div>}>
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <ContactSection />
+        <Footer />
+      </Suspense>
     </div>
   )
 }

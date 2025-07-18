@@ -4,7 +4,6 @@ import React from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { GlitchText } from "@/components/glitch-text"
 
 interface SocialLinksProps {
   className?: string
@@ -24,7 +23,7 @@ export const SocialLinks = ({ className = "" }: SocialLinksProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.7 }}
     >
-      {socialItems.map(({ Icon, label, color }, index) => (
+      {socialItems.map(({ Icon, label, color }) => (
         <motion.div
           key={label}
           whileHover={{ y: -3, scale: 1.1 }}

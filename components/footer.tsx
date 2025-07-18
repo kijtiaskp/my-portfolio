@@ -18,7 +18,7 @@ export const Footer = () => {
           <div className="flex items-center space-x-2 text-green-300 font-mono">
             <span className="text-green-400">$</span>
             <span>
-              <GlitchText>echo "© 2024 Kijtisak Pangmee" &gt; /dev/null && exit 0</GlitchText>
+              <GlitchText>echo &quot;© 2024 Kijtisak Pangmee&quot; &gt; /dev/null && exit 0</GlitchText>
             </span>
           </div>
           <div className="flex items-center space-x-4">

@@ -1,12 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Github, Linkedin, MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
 import { ContactForm } from "@/components/contact-form"
 import { GlitchText } from "@/components/glitch-text"
@@ -83,7 +78,7 @@ export const ContactSection = () => {
 
             <motion.p variants={fadeInUp} className="text-green-300 font-mono">
               <GlitchText>
-                I'm always open to discussing new opportunities, interesting projects, or just having a chat about
+                I&apos;m always open to discussing new opportunities, interesting projects, or just having a chat about
                 technology. Feel free to reach out!
               </GlitchText>
             </motion.p>

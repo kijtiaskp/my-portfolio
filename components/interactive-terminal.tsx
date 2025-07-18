@@ -1,8 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { GlitchText } from "@/components/glitch-text"
 import { terminalCommands } from "@/data/portfolio-data"
 import { TerminalHistoryItem } from "@/types/portfolio"
 

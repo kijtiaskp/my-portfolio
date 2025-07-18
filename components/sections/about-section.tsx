@@ -5,7 +5,6 @@ import { Terminal } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
 import { GlitchText } from "@/components/glitch-text"
 import { SpecsGlitch } from "@/components/specs-glitch"
-import { Progress } from "@/components/ui/progress"
 import { fadeInUp, staggerContainer } from "@/data/portfolio-data"
 
 export const AboutSection = () => {
@@ -26,7 +25,7 @@ export const AboutSection = () => {
             <GlitchText>cat /proc/cpuinfo</GlitchText>
           </span>
           <span className="text-green-500">
-            <GlitchText>| grep "model name"</GlitchText>
+            <GlitchText>| grep &quot;model name&quot;</GlitchText>
           </span>
         </motion.div>
 
@@ -54,57 +53,57 @@ export const AboutSection = () => {
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>name</GlitchText>"
+                  &quot;<GlitchText>name</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>Kijtisak Pangmee</GlitchText>"
+                  &quot;<GlitchText>Kijtisak Pangmee</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>role</GlitchText>"
+                  &quot;<GlitchText>role</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>Software Developer</GlitchText>"
+                  &quot;<GlitchText>Software Developer</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>address</GlitchText>"
+                  &quot;<GlitchText>address</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>Bangkapi, Bangkok, 10240</GlitchText>"
+                  &quot;<GlitchText>Bangkapi, Bangkok, 10240</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>phone</GlitchText>"
+                  &quot;<GlitchText>phone</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>(+66) 80 733 0752</GlitchText>"
+                  &quot;<GlitchText>(+66) 80 733 0752</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>email</GlitchText>"
+                  &quot;<GlitchText>email</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>kijtisak.pa@gmail.com</GlitchText>"
+                  &quot;<GlitchText>kijtisak.pa@gmail.com</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>education</GlitchText>"
+                  &quot;<GlitchText>education</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-green-400">
@@ -113,31 +112,31 @@ export const AboutSection = () => {
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>degree</GlitchText>"
+                  &quot;<GlitchText>degree</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>Bachelor Degree in Information Technology</GlitchText>"
+                  &quot;<GlitchText>Bachelor Degree in Information Technology</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>university</GlitchText>"
+                  &quot;<GlitchText>university</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>Kasetsart University Sriracha Campus</GlitchText>"
+                  &quot;<GlitchText>Kasetsart University Sriracha Campus</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>period</GlitchText>"
+                  &quot;<GlitchText>period</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>June 2012 – June 2020</GlitchText>"
+                  &quot;<GlitchText>June 2012 – June 2020</GlitchText>&quot;
                 </span>
                 <br />
                 &nbsp;&nbsp;
@@ -148,7 +147,7 @@ export const AboutSection = () => {
                 <br />
                 &nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>languages</GlitchText>"
+                  &quot;<GlitchText>languages</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-green-400">
@@ -157,21 +156,21 @@ export const AboutSection = () => {
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>thai</GlitchText>"
+                  &quot;<GlitchText>thai</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>native</GlitchText>"
+                  &quot;<GlitchText>native</GlitchText>&quot;
                 </span>
                 ,
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="text-cyan-300">
-                  "<GlitchText>english</GlitchText>"
+                  &quot;<GlitchText>english</GlitchText>&quot;
                 </span>
                 :{" "}
                 <span className="text-amber-300">
-                  "<GlitchText>good to read for work, still practicing to speak</GlitchText>"
+                  &quot;<GlitchText>good to read for work, still practicing to speak</GlitchText>&quot;
                 </span>
                 <br />
                 &nbsp;&nbsp;

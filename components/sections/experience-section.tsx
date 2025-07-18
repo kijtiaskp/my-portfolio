@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Calendar, MapPin, ExternalLink } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import { AnimatedSection } from "@/components/animated-section"
 import { GlitchText } from "@/components/glitch-text"
 import { experienceData, createSkillColorMap } from "@/data/portfolio-data"
@@ -118,7 +117,7 @@ export const ExperienceSection = () => {
             <GlitchText>tail -f /var/log/career.log</GlitchText>
           </span>
           <span className="text-green-500">
-            <GlitchText>| grep -E "^[0-9]"</GlitchText>
+            <GlitchText>| grep -E &quot;^[0-9]&quot;</GlitchText>
           </span>
         </motion.div>
 

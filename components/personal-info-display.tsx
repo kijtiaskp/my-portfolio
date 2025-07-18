@@ -58,57 +58,57 @@ export const PersonalInfoDisplay = ({
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>name</GlitchText>"
+                      &quot;<GlitchText>name</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.name || ""}</GlitchText>"
+                      &quot;<GlitchText>{personalData.name || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>role</GlitchText>"
+                      &quot;<GlitchText>role</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.role || ""}</GlitchText>"
+                      &quot;<GlitchText>{personalData.role || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>address</GlitchText>"
+                      &quot;<GlitchText>address</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.address || ""}</GlitchText>"
+                      &quot;<GlitchText>{personalData.address || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>phone</GlitchText>"
+                      &quot;<GlitchText>phone</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.phone || ""}</GlitchText>"
+                      &quot;<GlitchText>{personalData.phone || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>email</GlitchText>"
+                      &quot;<GlitchText>email</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.email || ""}</GlitchText>"
+                      &quot;<GlitchText>{personalData.email || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>education</GlitchText>"
+          &quot;<GlitchText>education</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-green-400">
@@ -117,31 +117,31 @@ export const PersonalInfoDisplay = ({
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>degree</GlitchText>"
+          &quot;<GlitchText>degree</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.education?.degree || ""}</GlitchText>"
+          &quot;<GlitchText>{personalData.education?.degree || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>university</GlitchText>"
+          &quot;<GlitchText>university</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.education?.university || ""}</GlitchText>"
+          &quot;<GlitchText>{personalData.education?.university || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>period</GlitchText>"
+          &quot;<GlitchText>period</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.education?.period || ""}</GlitchText>"
+          &quot;<GlitchText>{personalData.education?.period || ""}</GlitchText>&quot;
         </span>
         <br />
         &nbsp;&nbsp;
@@ -152,7 +152,7 @@ export const PersonalInfoDisplay = ({
         <br />
         &nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>languages</GlitchText>"
+          &quot;<GlitchText>languages</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-green-400">
@@ -161,21 +161,21 @@ export const PersonalInfoDisplay = ({
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>thai</GlitchText>"
+          &quot;<GlitchText>thai</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.languages?.thai || ""}</GlitchText>"
+          &quot;<GlitchText>{personalData.languages?.thai || ""}</GlitchText>&quot;
         </span>
         ,
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span className="text-cyan-300">
-          "<GlitchText>english</GlitchText>"
+          &quot;<GlitchText>english</GlitchText>&quot;
         </span>
         :{" "}
         <span className="text-amber-300">
-          "<GlitchText>{personalData.languages?.english || ""}</GlitchText>"
+          &quot;<GlitchText>{personalData.languages?.english || ""}</GlitchText>&quot;
         </span>
         <br />
         &nbsp;&nbsp;

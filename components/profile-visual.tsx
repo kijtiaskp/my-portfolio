@@ -2,7 +2,6 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { GlitchText } from "@/components/glitch-text"
 import { BinaryBackground } from "@/components/binary-background"
 import { ProfileImage } from "@/components/profile-image"
 import { ScanningLine } from "@/components/scanning-line"
