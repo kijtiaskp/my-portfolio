@@ -27,8 +27,8 @@ export interface Project {
 }
 
 export interface TerminalHistoryItem {
-  type: "output" | "command" | "invalid-command" | "error" | "info"
-  content: string
+  type: "output" | "command" | "invalid-command" | "error" | "green-info"
+  content: string | React.ReactNode
 }
 
 export interface ContactInfo {

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { terminalCommands } from "@/data/portfolio-data"
 import { TerminalHistoryItem } from "@/types/portfolio"
+import { DynamicGlitchText } from "./dynamic-glitch-text"
 
 interface InteractiveTerminalProps {
   className?: string
@@ -11,10 +12,11 @@ interface InteractiveTerminalProps {
 export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps) => {
   const [currentCommand, setCurrentCommand] = useState("")
   const [terminalHistory, setTerminalHistory] = useState<TerminalHistoryItem[]>([
-    { type: "output", content: "Linux portfolio-server 5.15.0-kijtisak #1 SMP" },
+    { type: "output", content: "Darwin Kijtisaks-MacBook-Pro.local 24.5.0 Darwin Kernel Version 24.5.0: Apple M1 Pro" },
+    { type: "output", content: "macOS 15.5 (24F74)" },
     { type: "output", content: "Last login: Loading..." },
-    { type: "output", content: "Welcome to Kijtisak's development environment!" },
-    { type: "info", content: "Type 'help' to see available commands." },
+    { type: "output", content: <DynamicGlitchText /> },
+    { type: "green-info", content: "Type 'help' to see available commands." },
   ])
 
   // Update the login date on client side only to prevent hydration mismatch
@@ -47,14 +49,14 @@ export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps
     // Add command to history with appropriate color
     setTerminalHistory((prev) => [...prev, {
       type: isValidCommand ? "command" : "invalid-command",
-      content: `$ ${cmd}`
+      content: `% ${cmd}`
     }])
 
     if (command === "clear") {
       setTimeout(() => {
         setTerminalHistory([
           { type: "output", content: "Terminal cleared." },
-          { type: "info", content: "Type 'help' to see available commands." },
+          { type: "green-info", content: "Type 'help' to see available commands." },
         ])
       }, 100)
       return
@@ -76,8 +78,8 @@ export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps
       setTimeout(() => {
         setTerminalHistory((prev) => [
           ...prev,
-          { type: "error", content: `bash: ${command}: command not found` },
-          { type: "info", content: "Type 'help' to see available commands." },
+          { type: "error", content: `zsh: command not found: ${command}` },
+          { type: "green-info", content: "Type 'help' to see available commands." },
         ])
       }, 300)
     }
@@ -92,7 +94,7 @@ export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps
           <div className="w-3 h-3 rounded-full bg-orange-400/80 border border-orange-400/40" />
           <div className="w-3 h-3 rounded-full bg-green-400 border border-green-400/60 shadow-sm shadow-green-400/50" />
         </div>
-        <span className="text-green-300 text-sm font-mono tracking-wider">kijtisak@dev:~</span>
+        <span className="text-green-300 text-sm font-mono tracking-wider">kijtisak@Kijtisaks-MacBook-Pro:~</span>
         <div className="w-12"></div>
       </div>
 
@@ -109,9 +111,9 @@ export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps
                     ? "text-red-400"
                     : line.type === "error"
                       ? "text-red-400"
-                      : line.type === "info"
-                        ? "text-yellow-400"
-                        : "text-slate-300"
+                                              : line.type === "green-info"
+                          ? "text-green-600"
+                          : "text-slate-300"
               }
             >
               <pre className="whitespace-pre-wrap font-mono text-left">
@@ -121,7 +123,7 @@ export const InteractiveTerminal = ({ className = "" }: InteractiveTerminalProps
           ))}
 
           <div className="flex items-center space-x-1 pt-2">
-            <span className="text-green-400">$</span>
+            <span className="text-green-400">%</span>
             <input
               type="text"
               value={currentCommand}
