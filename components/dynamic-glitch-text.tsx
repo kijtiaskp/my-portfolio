@@ -53,4 +53,4 @@ export const DynamicGlitchText = ({
       {displayText}
     </span>
   )
-} 
+}

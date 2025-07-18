@@ -85,4 +85,4 @@ export const GlitchColorProvider = ({ children }: GlitchColorProviderProps) => {
       )}
     </GlitchColorContext.Provider>
   )
-} 
+}

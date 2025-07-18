@@ -11,4 +11,4 @@ export const ScanningLine = () => {
       transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
     />
   )
-} 
+}

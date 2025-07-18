@@ -28,7 +28,7 @@
 - Animation timing and effects
 
 **Current Styling Structure**:
-```tsx
+\`\`\`tsx
 // Hero Name - PRESERVE EXACTLY
 style={{
   color: "#ffffff",
@@ -40,13 +40,13 @@ style={{
 className="text-xl lg:text-2xl text-slate-300 font-mono"
 // With $ symbol: <span className="text-green-400">$</span>
 // And animated cursor: w-3 h-6 bg-green-400 ml-1
-```
+\`\`\`
 
 **Button Styling**:
-```tsx
+\`\`\`tsx
 // Get In Touch button - PRESERVE hover text color
 className="...hover:text-green-400..."  // Keeps text readable on dark background
-```
+\`\`\`
 
 #### `about-section.tsx`
 **Purpose**: Personal introduction and skills overview
@@ -206,4 +206,4 @@ Based on shadcn/ui components with custom theming:
 - Focus on technical accuracy and functionality
 - Maintain consistent professional tone throughout all documents
 - Ensure all text is readable and self-explanatory without visual symbols
-- Write descriptive text that conveys meaning clearly without relying on visual cues 
+- Write descriptive text that conveys meaning clearly without relying on visual cues

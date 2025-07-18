@@ -106,4 +106,4 @@ const ProfileImage = memo(({ src, alt = "Profile Avatar", priority = false }: Pr
 
 ProfileImage.displayName = "ProfileImage"
 
-export { ProfileImage } 
+export { ProfileImage }

@@ -92,4 +92,4 @@ const BinaryBackground = memo(() => {
 
 BinaryBackground.displayName = "BinaryBackground"
 
-export { BinaryBackground } 
+export { BinaryBackground }
