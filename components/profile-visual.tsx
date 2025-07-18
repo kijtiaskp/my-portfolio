@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { BinaryBackground } from "@/components/binary-background"
 import { ProfileImage } from "@/components/profile-image"
 import { ScanningLine } from "@/components/scanning-line"
-import { FloatingIndicators } from "@/components/floating-indicators"
 
 interface ProfileVisualProps {
   className?: string
@@ -30,14 +29,9 @@ export const ProfileVisual = ({ className = "" }: ProfileVisualProps) => {
           {/* Profile Image */}
           <ProfileImage src="https://kijtisak-portfolio.s3.ap-southeast-1.amazonaws.com/avatar.jpg" />
 
-
-
           {/* Scanning Line Effect */}
           <ScanningLine />
         </motion.div>
-
-        {/* Floating indicators */}
-        <FloatingIndicators />
       </div>
     </motion.div>
   )
