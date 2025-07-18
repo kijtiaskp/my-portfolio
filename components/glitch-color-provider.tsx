@@ -79,7 +79,7 @@ export const GlitchColorProvider = ({ children }: GlitchColorProviderProps) => {
       {isLoaded ? children : (
         <div className="bg-black min-h-screen flex items-center justify-center">
           <div className="text-green-400 font-mono text-sm animate-pulse">
-            Loading theme...
+            loading ...
           </div>
         </div>
       )}
