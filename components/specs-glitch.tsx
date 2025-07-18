@@ -18,6 +18,7 @@ export const SpecsGlitch = ({ className = "" }: SpecsGlitchProps) => {
     gpu: false,
     display: false
   })
+  const [isMainGlitching, setIsMainGlitching] = useState(false)
 
   const systems = useMemo(() => [
     // MacBook + Linux/macOS
@@ -65,33 +66,52 @@ export const SpecsGlitch = ({ className = "" }: SpecsGlitchProps) => {
   ], [])
 
   // Function to trigger cascading glitch effect
-  const triggerCascadingGlitch = useCallback((shouldChangeText: boolean = false) => {
-    if (shouldChangeText && currentSpecs !== null) {
-      setCurrentSpecs(prev => (prev + 1) % systems.length)
-    }
+  const triggerCascadingGlitch = useCallback((changeText = false) => {
+    const sections = ['model', 'processor', 'memory', 'storage', 'usage', 'gpu', 'display']
+    const glitchDelay = 100 // Delay between each section glitch
 
-    // Start cascading effect
-    systems.forEach((_, index) => {
+    setIsMainGlitching(true) // Start main glitch period
+
+    sections.forEach((section, index) => {
       setTimeout(() => {
-        setGlitchStates(prev => ({ ...prev, [index]: true }))
-        
-        // Turn off glitch after a short duration
+        setGlitchStates(prev => ({ ...prev, [section]: true }))
+
+        // Change text during the glitch of each section
+        if (changeText) {
+          setTimeout(() => {
+            setCurrentSpecs((prev) => (prev + 1) % systems.length)
+          }, 200) // Change text in the middle of this section's glitch
+        }
+
+        // Stop glitch for this section after 400ms
         setTimeout(() => {
-          setGlitchStates(prev => ({ ...prev, [index]: false }))
-        }, 150) // Short duration for quick cascading effect
-      }, index * 50) // 50ms delay between each system
+          setGlitchStates(prev => ({ ...prev, [section]: false }))
+        }, 400)
+      }, index * glitchDelay)
     })
-  }, [currentSpecs, systems])
+
+    // End main glitch period after all sections complete
+    const totalGlitchTime = (sections.length - 1) * glitchDelay + 400
+    setTimeout(() => {
+      setIsMainGlitching(false)
+    }, totalGlitchTime + 100)
+  }, [systems])
 
   // Function for random glitches during reading periods
   const triggerRandomGlitch = useCallback(() => {
-    const randomSection = Math.floor(Math.random() * systems.length)
+    // Only trigger random glitch during reading periods (not during main glitch)
+    if (isMainGlitching) return
+
+    const sections = ['model', 'processor', 'memory', 'storage', 'usage', 'gpu', 'display']
+    const randomSection = sections[Math.floor(Math.random() * sections.length)]
+
     setGlitchStates(prev => ({ ...prev, [randomSection]: true }))
-    
+
+    // Stop random glitch after short duration
     setTimeout(() => {
       setGlitchStates(prev => ({ ...prev, [randomSection]: false }))
     }, 150 + Math.random() * 100) // Shorter random duration 150-250ms
-  }, [systems])
+  }, [isMainGlitching])
 
   useEffect(() => {
     // Main cascading glitch interval
