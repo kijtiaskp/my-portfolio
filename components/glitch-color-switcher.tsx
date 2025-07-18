@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Palette } from "lucide-react"
 import { useGlitchColor, GlitchColorType } from "@/components/glitch-color-provider"
@@ -17,7 +17,17 @@ const colorOptions: { type: GlitchColorType; name: string; preview: string }[] =
 
 export const GlitchColorSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [glitchTrigger, setGlitchTrigger] = useState(0)
   const { currentColor, setColor } = useGlitchColor()
+
+  // Trigger glitch effect every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlitchTrigger(prev => prev + 1)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   const handleColorChange = (colorType: GlitchColorType) => {
     setColor(colorType)
@@ -35,7 +45,7 @@ export const GlitchColorSwitcher = () => {
       >
         <Palette className="w-4 h-4 text-green-400 group-hover:text-green-300" />
         <span className="text-green-300 text-sm font-mono group-hover:text-green-200">
-          <GlitchText>{colorOptions.find(opt => opt.type === currentColor)?.name || 'Error'}</GlitchText>
+          <GlitchText key={glitchTrigger}>{colorOptions.find(opt => opt.type === currentColor)?.name || 'Error'}</GlitchText>
         </span>
       </motion.button>
 
