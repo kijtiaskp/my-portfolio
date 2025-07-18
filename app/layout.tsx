@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
+import { GlitchColorProvider } from '@/components/glitch-color-provider'
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -20,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${jetbrainsMono.variable} bg-black`}>
         <ThemeProvider
           attribute="class"
@@ -28,7 +29,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <GlitchColorProvider>
+            {children}
+          </GlitchColorProvider>
         </ThemeProvider>
       </body>
     </html>

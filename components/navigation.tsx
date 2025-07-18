@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { GlitchText } from "@/components/glitch-text"
+import { GlitchColorSwitcher } from "@/components/glitch-color-switcher"
 import { navigationItems, fadeInUp, staggerContainer } from "@/data/portfolio-data"
 import { scrollToElement } from "@/data/portfolio-data"
 
@@ -66,6 +67,11 @@ export const Navigation = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
           >
+            {/* Glitch Color Switcher */}
+            <div className="hidden md:block">
+              <GlitchColorSwitcher />
+            </div>
+
             {/* Mobile Menu Button */}
             <button
               className="md:hidden p-2 rounded-lg text-green-400 hover:bg-green-400/20 transition-colors"
@@ -125,7 +131,12 @@ export const Navigation = () => {
               </button>
             ))}
 
-            <div className="pt-3 mt-3 border-t border-green-400/20">
+            <div className="pt-3 mt-3 border-t border-green-400/20 space-y-3">
+              {/* Mobile Glitch Color Switcher */}
+              <div className="flex justify-center">
+                <GlitchColorSwitcher />
+              </div>
+              
               <div className="flex items-center justify-center space-x-2 px-3 py-2 rounded-lg bg-green-400/20 border border-green-400/40">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                 <span className="text-green-300 text-sm font-mono">

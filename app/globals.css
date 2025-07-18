@@ -386,3 +386,163 @@
     color: inherit;
   }
 }
+
+/* Glitch Neon Animation */
+.glitch-neon {
+  animation: glitch-neon-animation 0.3s infinite;
+}
+
+@keyframes glitch-neon-animation {
+  0%, 100% {
+    text-shadow: 
+      -1px 0 0 rgba(255, 0, 255, 0.5),
+      1px 0 0 rgba(0, 255, 255, 0.5),
+      0 -1px 0 rgba(255, 255, 0, 0.3),
+      0 1px 0 rgba(255, 0, 255, 0.3);
+    color: inherit;
+  }
+  25% {
+    text-shadow: 
+      -2px 0 0 rgba(255, 0, 255, 0.7),
+      2px 0 0 rgba(0, 255, 255, 0.7),
+      0 -2px 0 rgba(255, 255, 0, 0.5),
+      0 2px 0 rgba(255, 0, 255, 0.5);
+    color: rgba(255, 0, 255, 0.8);
+  }
+  50% {
+    text-shadow: 
+      2px 0 0 rgba(255, 0, 255, 0.5),
+      -2px 0 0 rgba(0, 255, 255, 0.5),
+      1px -1px 0 rgba(255, 255, 0, 0.6),
+      -1px 1px 0 rgba(255, 0, 255, 0.6);
+    color: rgba(0, 255, 255, 0.8);
+  }
+  75% {
+    text-shadow: 
+      0 0 0 rgba(255, 0, 255, 0.5),
+      3px 0 0 rgba(0, 255, 255, 0.5),
+      -1px -2px 0 rgba(255, 255, 0, 0.4),
+      1px 2px 0 rgba(255, 0, 255, 0.4);
+    color: rgba(255, 255, 0, 0.8);
+  }
+}
+
+/* Glitch Fire Animation */
+.glitch-fire {
+  animation: glitch-fire-animation 0.3s infinite;
+}
+
+@keyframes glitch-fire-animation {
+  0%, 100% {
+    text-shadow: 
+      -1px 0 0 rgba(255, 0, 0, 0.6),
+      1px 0 0 rgba(255, 165, 0, 0.6),
+      0 -1px 0 rgba(255, 69, 0, 0.4),
+      0 1px 0 rgba(255, 140, 0, 0.4);
+    color: inherit;
+  }
+  25% {
+    text-shadow: 
+      -2px 0 0 rgba(255, 0, 0, 0.8),
+      2px 0 0 rgba(255, 165, 0, 0.8),
+      0 -2px 0 rgba(255, 69, 0, 0.6),
+      0 2px 0 rgba(255, 140, 0, 0.6);
+    color: rgba(255, 69, 0, 0.9);
+  }
+  50% {
+    text-shadow: 
+      2px 0 0 rgba(255, 0, 0, 0.6),
+      -2px 0 0 rgba(255, 165, 0, 0.6),
+      1px -1px 0 rgba(255, 69, 0, 0.7),
+      -1px 1px 0 rgba(255, 140, 0, 0.7);
+    color: rgba(255, 140, 0, 0.9);
+  }
+  75% {
+    text-shadow: 
+      0 0 0 rgba(255, 0, 0, 0.6),
+      3px 0 0 rgba(255, 165, 0, 0.6),
+      -1px -2px 0 rgba(255, 69, 0, 0.5),
+      1px 2px 0 rgba(255, 140, 0, 0.5);
+    color: rgba(255, 0, 0, 0.9);
+  }
+}
+
+/* Glitch Ice Animation */
+.glitch-ice {
+  animation: glitch-ice-animation 0.3s infinite;
+}
+
+@keyframes glitch-ice-animation {
+  0%, 100% {
+    text-shadow: 
+      -1px 0 0 rgba(0, 191, 255, 0.6),
+      1px 0 0 rgba(173, 216, 230, 0.6),
+      0 -1px 0 rgba(135, 206, 250, 0.4),
+      0 1px 0 rgba(176, 224, 230, 0.4);
+    color: inherit;
+  }
+  25% {
+    text-shadow: 
+      -2px 0 0 rgba(0, 191, 255, 0.8),
+      2px 0 0 rgba(173, 216, 230, 0.8),
+      0 -2px 0 rgba(135, 206, 250, 0.6),
+      0 2px 0 rgba(176, 224, 230, 0.6);
+    color: rgba(135, 206, 250, 0.9);
+  }
+  50% {
+    text-shadow: 
+      2px 0 0 rgba(0, 191, 255, 0.6),
+      -2px 0 0 rgba(173, 216, 230, 0.6),
+      1px -1px 0 rgba(135, 206, 250, 0.7),
+      -1px 1px 0 rgba(176, 224, 230, 0.7);
+    color: rgba(173, 216, 230, 0.9);
+  }
+  75% {
+    text-shadow: 
+      0 0 0 rgba(0, 191, 255, 0.6),
+      3px 0 0 rgba(173, 216, 230, 0.6),
+      -1px -2px 0 rgba(135, 206, 250, 0.5),
+      1px 2px 0 rgba(176, 224, 230, 0.5);
+    color: rgba(0, 191, 255, 0.9);
+  }
+}
+
+/* Glitch Matrix Animation - Using theme colors */
+.glitch-matrix {
+  animation: glitch-matrix-animation 0.3s infinite;
+}
+
+@keyframes glitch-matrix-animation {
+  0%, 100% {
+    text-shadow: 
+      -1px 0 0 rgba(34, 197, 94, 0.6),
+      1px 0 0 rgba(22, 163, 74, 0.6),
+      0 -1px 0 rgba(21, 128, 61, 0.4),
+      0 1px 0 rgba(74, 222, 128, 0.4);
+    color: inherit;
+  }
+  25% {
+    text-shadow: 
+      -2px 0 0 rgba(34, 197, 94, 0.8),
+      2px 0 0 rgba(22, 163, 74, 0.8),
+      0 -2px 0 rgba(21, 128, 61, 0.6),
+      0 2px 0 rgba(74, 222, 128, 0.6);
+    color: rgba(21, 128, 61, 0.9);
+  }
+  50% {
+    text-shadow: 
+      2px 0 0 rgba(34, 197, 94, 0.6),
+      -2px 0 0 rgba(22, 163, 74, 0.6),
+      1px -1px 0 rgba(21, 128, 61, 0.7),
+      -1px 1px 0 rgba(74, 222, 128, 0.7);
+    color: rgba(22, 163, 74, 0.9);
+  }
+  75% {
+    text-shadow: 
+      0 0 0 rgba(34, 197, 94, 0.6),
+      3px 0 0 rgba(22, 163, 74, 0.6),
+      -1px -2px 0 rgba(21, 128, 61, 0.5),
+      1px 2px 0 rgba(74, 222, 128, 0.5);
+    color: rgba(34, 197, 94, 0.9);
+  }
+}
