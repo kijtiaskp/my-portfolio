@@ -2,6 +2,7 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 import { experiences } from "@/data/resume"
+import TechBadge from "@/components/tech-badge"
 
 export default function Experience() {
   const { ref, visible } = useReveal()
@@ -87,12 +88,7 @@ export default function Experience() {
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 text-[11px] text-apple-tertiary bg-white/[0.04] border border-white/[0.04] rounded-full hover:bg-white/[0.08] hover:text-apple-secondary transition-colors duration-200"
-                      >
-                        {tech}
-                      </span>
+                      <TechBadge key={tech} name={tech} />
                     ))}
                   </div>
                 </div>

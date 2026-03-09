@@ -15,8 +15,8 @@ export const profile = {
 }
 
 export const socials: Social[] = [
-  { label: "GitHub", href: "https://github.com/kijtisak" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/kijtisak" },
+  { label: "GitHub", href: "https://github.com/kijtiaskp" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/kijtisak-pangmee-1a790b391/" },
 ]
 
 export const subtitleTexts = [

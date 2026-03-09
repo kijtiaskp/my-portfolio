@@ -2,6 +2,7 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 import { skills } from "@/data/resume"
+import TechBadge from "@/components/tech-badge"
 
 const categoryIcons: Record<string, string> = {
   Languages: "{ }",
@@ -58,12 +59,7 @@ export default function Skills() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1.5 text-xs text-apple-secondary bg-white/[0.04] rounded-lg border border-white/[0.04] hover:bg-white/[0.08] hover:text-apple-text hover:border-white/[0.08] transition-all duration-200"
-                  >
-                    {item}
-                  </span>
+                  <TechBadge key={item} name={item} size="md" />
                 ))}
               </div>
             </div>

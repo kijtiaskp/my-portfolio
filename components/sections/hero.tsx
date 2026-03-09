@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { profile, socials, subtitleTexts } from "@/data/resume"
+import TechIcon from "@/components/tech-icon"
+
+const heroTechs = ["React", "TypeScript", "Go", "Vue.js", "Next.js", "Nuxt.js", ".NET Core", "AWS"]
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -119,15 +122,16 @@ export default function Hero() {
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <p className="text-[10px] text-apple-tertiary/40 tracking-[0.3em] uppercase mb-4">
+          <p className="text-[10px] text-apple-tertiary/40 tracking-[0.3em] uppercase mb-5">
             Tech I work with
           </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-apple-tertiary/50">
-            {["React", "TypeScript", "Go", "Vue.js", "Next.js", "Nuxt.js", ".NET", "AWS"].map(
-              (tech) => (
-                <span key={tech}>{tech}</span>
-              )
-            )}
+          <div className="flex flex-wrap justify-center gap-4 text-xs text-apple-tertiary/60">
+            {heroTechs.map((tech) => (
+              <span key={tech} className="flex items-center gap-1.5 hover:text-apple-secondary transition-colors duration-300">
+                <TechIcon name={tech} size={14} />
+                {tech}
+              </span>
+            ))}
           </div>
         </div>
       </div>

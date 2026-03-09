@@ -2,6 +2,7 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 import { projects } from "@/data/resume"
+import TechBadge from "@/components/tech-badge"
 
 const statusStyle: Record<string, string> = {
   active: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
@@ -85,12 +86,7 @@ export default function Projects() {
 
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 text-[11px] text-apple-tertiary bg-white/[0.04] border border-white/[0.04] rounded-full"
-                    >
-                      {tech}
-                    </span>
+                    <TechBadge key={tech} name={tech} />
                   ))}
                 </div>
 
