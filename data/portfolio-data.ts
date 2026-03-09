@@ -33,7 +33,7 @@ export const skillsData: SkillCategory[] = [
   {
     title: "DevOps & Tools",
     color: "text-indigo-300",
-    skills: ["AWS S3", "Docker", "GIT", "GIT command", "GitHub Actions", "Google Maps API", "Vercel"],
+    skills: ["AWS S3", "Docker", "GIT", "GIT command", "GitHub Actions", "GitHub Pages", "Google Maps API"],
   },
   {
     title: "Others",
@@ -98,8 +98,8 @@ export const experienceData: Experience[] = [
 export const projectsData: Project[] = [
   {
     title: "E-WEDDING CARD",
-    description: "Bootstrapped file structure with Cursor using Next.js tech stack. Integrated Google Maps for venue location, stored images on AWS S3, and set up GitHub Actions CI/CD for Vercel deployment.",
-    technologies: ["Next.js", "React", "Google Maps API", "AWS S3", "GitHub Actions", "Vercel"],
+    description: "Bootstrapped file structure with Cursor using Next.js tech stack. Integrated Google Maps for venue location, stored images on AWS S3, and set up GitHub Actions CI/CD for GitHub Pages deployment.",
+    technologies: ["Next.js", "React", "Google Maps API", "AWS S3", "GitHub Actions", "GitHub Pages"],
     status: "developing",
     featured: true,
   },
@@ -165,7 +165,7 @@ export const terminalCommands: Commands = {
     { type: "output", content: "├── language: TypeScript 87.3%" },
     { type: "output", content: "├── framework: Next.js 14.x" },
     { type: "output", content: "├── services: Google Maps API, AWS S3" },
-    { type: "output", content: "├── deployment: Vercel" },
+    { type: "output", content: "├── deployment: GitHub Pages" },
     { type: "output", content: "├── pipeline: GitHub Actions CI/CD" },
     { type: "output", content: "└── status: development branch" },
     { type: "output", content: "" },
