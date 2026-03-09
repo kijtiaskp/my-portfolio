@@ -1,10 +1,17 @@
 export default function Footer() {
   return (
-    <footer className="py-8 px-6">
-      <div className="divider mb-8" />
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-apple-tertiary">
-        <span>&copy; {new Date().getFullYear()} Kijtisak Pangmee</span>
-        <span>Built with Next.js &middot; Deployed on GitHub Pages</span>
+    <footer className="relative py-10 px-6">
+      <div className="divider mb-10" />
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-semibold text-apple-text/80">K.P</span>
+          <span className="text-xs text-apple-tertiary/40">
+            &copy; {new Date().getFullYear()} Kijtisak Pangmee
+          </span>
+        </div>
+        <span className="text-xs text-apple-tertiary/30">
+          Built with Next.js &middot; Deployed on GitHub Pages
+        </span>
       </div>
     </footer>
   )
