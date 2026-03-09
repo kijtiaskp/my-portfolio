@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { profile, socials, subtitleTexts } from "@/data/resume"
 import TechIcon from "@/components/tech-icon"
+import ScrambleText from "@/components/scramble-text"
 
 const heroTechs = ["React", "TypeScript", "Go", "Vue.js", "Next.js", "Nuxt.js", ".NET Core", "AWS"]
 
@@ -90,12 +91,11 @@ export default function Hero() {
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <span
+          <ScrambleText
             key={roleIndex}
-            className="inline-block text-apple-tertiary text-sm tracking-widest uppercase animate-fadeUp"
-          >
-            {subtitleTexts[roleIndex]}
-          </span>
+            text={subtitleTexts[roleIndex]}
+            className="inline-block text-sm tracking-widest uppercase text-[#6e6e73]"
+          />
         </div>
 
         <div
