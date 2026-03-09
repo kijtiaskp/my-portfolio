@@ -57,17 +57,23 @@ export default function Hero() {
           {profile.title}
         </p>
 
-        <h1
-          className={`text-gradient-hero text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold tracking-tight leading-[0.95] transition-all duration-1000 delay-200 ${
+        <div
+          className={`inline-block transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          {profile.name.split(" ")[0]}
-          <br />
-          <span className="text-shine">
-            {profile.name.split(" ").slice(1).join(" ")}
-          </span>
-        </h1>
+          <div className="border-glow-wrapper relative inline-block rounded-2xl p-[1px]">
+            <div className="relative rounded-2xl bg-apple-bg px-8 py-6 sm:px-12 sm:py-8">
+              <h1 className="text-gradient-hero text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold tracking-tight leading-[0.95]">
+                {profile.name.split(" ")[0]}
+                <br />
+                <span className="text-shine">
+                  {profile.name.split(" ").slice(1).join(" ")}
+                </span>
+              </h1>
+            </div>
+          </div>
+        </div>
 
         <div
           className={`mt-8 transition-all duration-1000 delay-300 ${
