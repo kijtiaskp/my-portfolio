@@ -26,7 +26,7 @@ export default function Nav() {
           href="#"
           className="text-sm font-semibold tracking-tight text-apple-text/90 hover:text-white transition-colors"
         >
-          K.P
+          <span className="font-mono">&lt;kijtiaskp/&gt;</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-7">
